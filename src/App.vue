@@ -1,30 +1,29 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+     <SocialNav/>
+     <Navbar />
   </div>
   <router-view/>
 </template>
 
+<script>
+import Navbar from './components/Navbar'
+import SocialNav from './components/SocialNav'
+export default {
+  components:{
+    Navbar,SocialNav
+  },
+  
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: rgba(10, 81, 139, 0.979);
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: rgba(139, 102, 96, 0.924);
 }
 </style>
