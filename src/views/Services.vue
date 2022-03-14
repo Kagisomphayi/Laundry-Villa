@@ -6,14 +6,17 @@
         <p class="text-white p-2">Prices</p>
       </div>
     </div>
-    <div class="container">
-      <div class="pb-5 cont justify-content-center">
+    <div class="container justify-content-center">
+      <div class="pb-5 cont ">
         <!-- SORT/FILTER/ADD -->
-        <div >
-          <div class="sort">
-            <div style="display: flex; justify-content: center" class="sort-content">
-              <div>
-                <h6 class="mb-0">SortByPrice:</h6>
+        <div>
+          <div class="">
+            <div
+              style=""
+              class="sort-content justify-content-center row"
+            >
+              <div class="col-10 col-md-8 col-lg-3">
+                <h6>SortByPrice:</h6>
                 <select
                   class="form-select text-center"
                   name=""
@@ -24,7 +27,8 @@
                   <option value="descending">Descending</option>
                 </select>
               </div>
-              <div>
+              <div class="mx-1 col-10 col-md-8 col-lg-3">
+                <h6>SortByTitle:</h6>
                 <select
                   class="form-select text-center"
                   name=""
@@ -35,7 +39,15 @@
                   <option value="descending">Descending</option>
                 </select>
               </div>
-              <h6>SortByTitle:</h6>
+              <div  class="col-10 col-md-8 col-lg-3" id="main">
+                <h6>Filter:</h6> 
+                <label >
+                  <input   placeholder="Search service" type="text" v-model="search" />
+                </label >
+                <!-- <div v-for="customer in filteredCustomers">
+                  <span>{{ customer.firstName }} {{ customer.lastName }}</span>
+                </div> -->
+              </div>
             </div>
           </div>
         </div>
@@ -118,6 +130,7 @@ export default {
   background-color: rgba(139, 102, 96, 0.924);
   position: fixed;
   top: 140px !important;
+  
 }
 .services {
   padding-top: 180px;
@@ -174,6 +187,8 @@ button:hover {
 }
 .sort-content {
   padding: 30px 5px 20px 5px;
+  /* display: flex; 
+  flex-wrap: wrap !important; */
 }
 .sort {
   background-color: white;
@@ -189,6 +204,12 @@ button:hover {
 }
 .subtitlee {
   margin-top: 70px;
+}
+input{
+  width:100% !important;
+}
+label{
+width: 100%;
 }
 .containe {
   justify-content: center !important;
