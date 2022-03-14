@@ -25,23 +25,28 @@
               </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy0"><router-link to="/">Home</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"><router-link to="/">Home</router-link></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy1"><router-link to="/about">About</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"><router-link to="/service">Service Prices</router-link></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy2">FAQs</a>
+              <a class="nav-link text-truncate p-0 m-2" ><router-link to="/faqs">About</router-link></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="##">Contact</a>
+              <a class="nav-link text-truncate p-0 m-2" ><router-link to="/contact">Contact</router-link></a>
+            </li>
+                        <li class="nav-item">
+              <a class="nav-link text-truncate py-2" href="#spy3"><router-link to="/confirm">Bookings</router-link></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy3">Login</a>
+              <a class="nav-link text-truncate " ><router-link class="p-2 m-0 login" to="/login">Login</router-link></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy3">Register</a>
+              <a class="nav-link text-truncate "><router-link class="p-2 mx-2 register" to="/register">Register</router-link></a>
             </li>
+
+
           </ul>
         </div>
       </div>
@@ -68,30 +73,30 @@
     <div class="offcanvas-body">
       <div class="dropdown mt-3 justify-content-right">
         <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="#spy0">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="#spy1">Morelink</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="#spy2">Another link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="#spy3">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="##">Link</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate"><router-link to="/">Home</router-link></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate"><router-link to="/service">Service Prices</router-link></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate" ><router-link to="/faqs">About</router-link></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate" ><router-link to="/contact">Contact</router-link></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-truncate " ><router-link to="/login">Login</router-link></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-truncate "><router-link to="/register">Register</router-link></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate" href="#spy3"><router-link to="/confirm">Bookings</router-link></a>
+            </li>
         </ul>
       </div>
     </div>
-  </div>
-  <div class="container-fluid py-2">
-    <p>
-      And then there is page content here. Narrow the viewport to see the
-      toggler.
-    </p>
   </div>
 </template>
 
@@ -100,6 +105,9 @@ export default {};
 </script>
 
 <style scoped>
+.login, .register{
+  border: solid 2px rgba(10, 81, 139, 0.979);
+}
 a{
   text-decoration-line: none;
 }
@@ -110,6 +118,7 @@ nav {
   background-color: rgb(255, 255, 255) !important;
   position: fixed;
   top: 40px;
+  height: 100px;
 }
 /* #nav{
   padding: 0;
@@ -129,6 +138,9 @@ nav {
     bottom: 0;
     left: -45%;
     transition: all 0.2s ease;
+  }
+  .nav-link {
+    padding: 0px !important;
   }
 
   .navbar-collapse.show .navbar-nav {

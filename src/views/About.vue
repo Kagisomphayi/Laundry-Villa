@@ -19,6 +19,7 @@ height: 40px;
 width: 100%;
 background-color: rgba(139, 102, 96, 0.924);
 position: fixed;
-top: 96px !important;
+top: 140px !important;
 }
+
 </style>
