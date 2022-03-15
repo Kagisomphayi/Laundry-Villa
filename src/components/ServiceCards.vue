@@ -6,10 +6,10 @@
           <div
             v-for="service in services"
             :key="service._id"
-            class="col-lg-3 col-md-6"
+            class="col-lg-3 col-sm-6 col-6 col-md-4"
             style="display: flex; justify-content: center"
           >
-            <div class="card shadow ani-card" style="width: 18rem">
+            <div class="card shadow ani-card">
               <img
                 :src="service.service_image"
                 class="card-img-top"
@@ -22,10 +22,10 @@
                 <p class="card-text text-black">R{{ service.service_price }}</p>
               </div>
 
-              <div class="card-body text-center">
+              <div class="card-body card-body-button text-center">
                 <button
                   type="button"
-                  class="btn mx-2 border-dark card-btn"
+                  class="btn border-dark card-btn"
                   @click="addToBookings(index)"
                 >
                   <i class="bi mx-1 bi-pen"></i>BOOK!
@@ -68,5 +68,12 @@ export default {
   border-radius: 10px;
   height: 200px;
   object-fit: cover;
+}
+.card{
+  /* height: 300px; */
+  width: 18rem
+}
+.card-body-button{
+  padding-top: 0px;
 }
 </style>
