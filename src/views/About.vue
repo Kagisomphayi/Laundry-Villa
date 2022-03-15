@@ -20,6 +20,7 @@ width: 100%;
 background-color: rgba(139, 102, 96, 0.924);
 position: fixed;
 top: 140px !important;
+z-index: 100;
 }
 
 </style>

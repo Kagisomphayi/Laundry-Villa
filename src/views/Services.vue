@@ -1,7 +1,7 @@
 <template>
   <!-- projects section -->
   <section id="services" class="services">
-    <div class="about-title">
+    <div class="price-title">
       <div class="container text-center">
         <p class="text-white p-2">Prices</p>
       </div>
@@ -52,7 +52,7 @@
           </div>
         </div>
         <!-- CARDS -->
-        <ProductCard />
+        <ServiceCards />
       </div>
       <!-- <div class="loading" v-else></div> -->
     </div>
@@ -60,10 +60,10 @@
 </template>
 
 <script>
-// import ProductCard from "../components/ProductCard";
+import ServiceCards from "../components/ServiceCards";
 export default {
   components: {
-    // ProductCard
+    ServiceCards
   },
   methods: {
     // ADD TO CART(not done)
@@ -124,13 +124,13 @@ export default {
 </script>
 
 <style scoped>
-.about-title {
+.price-title {
   height: 40px;
   width: 100%;
   background-color: rgba(139, 102, 96, 0.924);
   position: fixed;
   top: 140px !important;
-  
+  z-index: 100;
 }
 .services {
   padding-top: 180px;
