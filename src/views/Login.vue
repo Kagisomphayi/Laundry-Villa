@@ -146,9 +146,7 @@ button:hover {
   justify-content: center !important;
 }
 
-.subtitlee {
-  padding-top: 50px !important;
-}
+
 @media all and (max-width: 991px) {
   .formm {
     width: 60%;

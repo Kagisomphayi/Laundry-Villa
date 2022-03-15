@@ -128,12 +128,10 @@ export default {
   height: 40px;
   width: 100%;
   background-color: rgba(139, 102, 96, 0.924);
-  position: fixed;
-  top: 140px !important;
   z-index: 100;
 }
 .services {
-  padding-top: 180px;
+  padding-top: 140px;
 }
 .loading {
   margin-top: 20%;
