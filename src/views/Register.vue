@@ -116,14 +116,14 @@ form {
 label {
   color: rgb(0, 0, 0);
   display: inline-block;
-  margin: 25px 0 15px;
+  margin: 10px 0 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
 }
 input {
   display: block;
-  padding: 10px 6px;
+  padding: 7px 6px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -133,12 +133,12 @@ input {
 .button-body {
   background: rgba(139, 102, 96, 0.924);
   border: 0;
-  padding: 10px 20px;
+  padding: 7px 15px;
   margin-top: 20px;
   color: rgb(255, 255, 255);
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 50px !important;
+  margin-bottom: 30px !important;
 }
 button:hover {
   opacity: 0.8;

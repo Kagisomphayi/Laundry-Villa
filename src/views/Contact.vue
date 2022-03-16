@@ -72,26 +72,27 @@
         <p class="text-white p-2">Contact</p>
       </div>
     </div>
-    <div class="cont container">
-      <div class="formm">
-        <div class="">
-          <div class="row justify-content-start">
-            <div class="col- ">
-              <i class="bi bi-envelope contact-icons"></i>
-              <p>mphayiw@gmail.com</p>
+    <div class="cont">
+      <div class="formm container justify-content-center">
+        <div class=" row ">
+          <div class="col-md-6 col-sm-12 col- col-lg-6 col-12">
+            <div class=" ">
+              <h5>Operating hours</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod praesentium voluptate, expedita blanditiis saepe alias! Earum soluta consequuntur molestias, obcaecati dolor voluptatibus doloremque est corrupti quasi, alias quidem eveniet reprehenderit!</p>
 
-              <p>
-                <i class="bi bi-geo-alt contact-icons"></i> Firgrove Rural
-                <br />
-                Cape Town, South Africa
+           
+                <h5>Contact details</h5>
+                  <p>
+               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis omnis at, rerum corporis provident sit accusantium dolores sequi quo accusamus error incidunt nostrum animi, autem, ab ullam doloremque? Expedita, ex!
               </p>
-              <i class="bi bi-telephone contact-icons"></i>
-              <p>(+27)79 928 2407</p>
+              <h5>Banking details</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste cupiditate dicta ullam veritatis consequuntur perferendis a mollitia, incidunt veniam, accusantium sequi rerum praesentium libero quaerat eius magni amet aliquid non!</p>
             </div>
           </div>
-        </div>
-        <div class="form-cont">
+        
+        <div class="form-cont col-md-6 col-sm-12 col- col-lg-6 col-12">
           <form @submit.prevent="register" class="contactMe container">
+             <div class="text-center"><h5 class=" p-2">Contact us</h5></div>
             <label class="text-black">Name:</label>
             <input
               class="form-input neu-border-inset"
@@ -121,10 +122,11 @@
 
             <div class="submit mb-3">
               <button type="Submit" class="mb-3 btn button-body">
-                <h5 id="sub" class="text-black mb-0">Register</h5>
+                <h5 id="sub" class="text-black mb-0">Submit</h5>
               </button>
             </div>
           </form>
+        </div>
         </div>
       </div>
     </div>
@@ -171,8 +173,9 @@ export default {
   position: fixed;
   top: 110px;
 }
-.form-cont {
-  width: 50%;
+
+h5{
+   color: rgba(10, 81, 139, 0.979);
 }
 .iframe {
   margin-top: 150px;
@@ -242,10 +245,8 @@ button:hover {
 }
 .formm {
   width: 100%;
-  justify-content: center;
-  display: flex !important;
-  flex-wrap: wrap;
   height: 100vh;
+  padding-top:70px;
 }
 .cont {
   display: flex;
