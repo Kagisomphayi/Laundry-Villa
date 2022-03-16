@@ -1,11 +1,14 @@
 <template>
   <section class="contact-background" id="contact">
+        <div class="login-title">
+      <div class="container text-center">
+        <p class="text-white p-2">Login</p>
+      </div>
+    </div>
     <div class="cont container">
-      <div class="justify-content-center formm">
+      <div class="formm">
+        <div class="form-cont">
         <form @submit.prevent="login" class="contactMe container mt-5">
-          <h2 class="text-center display-6 fw-bold mb-3 subtitlee">
-            <u>LogIn</u>
-          </h2>
           <label class="text-black">Email:</label>
           <input
             class="form-input neu-border-inset"
@@ -33,6 +36,7 @@
             </p>
           </div>
         </form>
+        </div>
       </div>
     </div>
   </section>
@@ -74,14 +78,31 @@ export default {
 </script>
 
 <style scoped>
+.login-title {
+  height: 40px;
+  width: 100%;
+  background-color: rgba(139, 102, 96, 0.924);
+  z-index: 100;
+  position: fixed;
+  top: 110px;
+}
+
+section{
+  height: 100vh;
+}
 form {
-  max-width: 100%;
+  width: 100%;
   margin: 30px auto;
   text-align: left;
   border-radius: 10px;
   background-color: white;
-  border: solid 2px black;
-  box-shadow: #000000;
+box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
+-webkit-box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
+-moz-box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
+  
+}
+.form-cont{
+  width:50%;
 }
 label {
   color: rgb(0, 0, 0);
@@ -101,18 +122,18 @@ input {
   background-color: rgba(233, 221, 221, 0.25);
 }
 .button-body {
-  background: rgb(255 212 0);
+  background: rgba(139, 102, 96, 0.924);
   border: 0;
   padding: 10px 20px;
   margin-top: 20px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   border-radius: 10px;
   cursor: pointer;
   margin-bottom: 50px !important;
 }
 button:hover {
   opacity: 0.8;
-  background: #000000;
+  background: rgba(10, 81, 139, 0.979);
 }
 .submit {
   text-align: center;
@@ -137,8 +158,12 @@ button:hover {
   font-size: 20px !important;
 }
 .formm {
-  width: 50%;
-  margin-top: 70px;
+  width: 100%;
+  /* margin-top: 70px; */
+  justify-content: center;
+  align-items: center !important;
+  display: flex;
+  height: 100vh;
 }
 .cont {
   display: flex;
@@ -148,24 +173,53 @@ button:hover {
 
 
 @media all and (max-width: 991px) {
-  .formm {
+  .form-cont {
     width: 60%;
-    margin-top: 70px;
   }
+
+  label {
+  color: rgb(0, 0, 0);
+  display: inline-block;
+  margin: 15px 0 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+input {
+  display: block;
+  padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  color: rgb(0, 0, 0);
+  background-color: rgba(233, 221, 221, 0.25);
+}
+.button-body {
+  background: rgba(139, 102, 96, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px !important;
+}
 }
 
 @media all and (max-width: 768px) {
-  .formm {
+  .form-cont {
     width: 70%;
-    margin-top: 70px;
   }
 }
 
 @media all and (max-width: 576px) {
-  .formm {
+  .form-cont {
     width: 80%;
-    margin-top: 70px;
   }
+  .login-title  {
+  top: 110px;
+}
+
 }
 @media all and (max-width: 400px) {
 }

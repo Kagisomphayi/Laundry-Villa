@@ -105,6 +105,7 @@ export default {};
 </script>
 
 <style scoped>
+
 .login, .register{
   border: solid 2px rgba(10, 81, 139, 0.979);
 }
@@ -118,7 +119,7 @@ nav {
   background-color: rgb(255, 255, 255) !important;
   position: fixed;
   top: 40px;
-  height: 100px;
+  height:70px;
 }
 /* #nav{
   padding: 0;
@@ -153,6 +154,11 @@ nav {
     width: 45%;
     transition: left 0.35s ease;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+}
+@media all and (max-width: 576px) {
+  nav {
+    height: 70px;
   }
 }
 </style>

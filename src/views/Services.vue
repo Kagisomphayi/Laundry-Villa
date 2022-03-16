@@ -129,9 +129,12 @@ export default {
   width: 100%;
   background-color: rgba(139, 102, 96, 0.924);
   z-index: 100;
+  position: fixed;
+  top: 140px;
 }
+
 .services {
-  padding-top: 140px;
+  padding-top: 200px;
 }
 .loading {
   margin-top: 20%;
@@ -241,7 +244,15 @@ width: 100%;
     width: 80%;
     margin-top: 70px;
   }
+  .services {
+  padding-top: 130px;
+}
+.price-title {
+  position: fixed;
+  top: 110px;
+}
 }
 @media all and (max-width: 400px) {
 }
+
 </style>
