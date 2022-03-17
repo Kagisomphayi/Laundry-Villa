@@ -9,8 +9,7 @@
         <div class="but-cont">
           <div class="container button-div">
             <h1 class="display-1 title text-bold mb-5">Laundry Villa</h1>
-            <p>Login to make a booking</p>
-            <button type="button" class="btn btn-primary">Primary</button>
+            <p>The best service you can get</p>
           </div>
         </div>
         <div class="carousel-item active">

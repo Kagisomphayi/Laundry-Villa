@@ -1,6 +1,6 @@
 <template>
   <section class="contact-background" id="contact">
-        <div class="login-title">
+    <div class="login-title">
       <div class="container text-center">
         <p class="text-white p-2">Login</p>
       </div>
@@ -8,34 +8,34 @@
     <div class="cont container">
       <div class="formm">
         <div class="form-cont">
-        <form @submit.prevent="login" class="contactMe container mt-5">
-          <label class="text-black">Email:</label>
-          <input
-            class="form-input neu-border-inset"
-            type="email"
-            v-model="user_email"
-          />
-          <label class="text-black">Password:</label>
-          <input
-            class="form-input neu-border-inset"
-            type="password"
-            v-model="user_password"
-          />
+          <form @submit.prevent="login" class="contactMe container mt-5">
+            <label class="text-black">Email:</label>
+            <input
+              class="form-input neu-border-inset"
+              type="email"
+              v-model="user_email"
+            />
+            <label class="text-black">Password:</label>
+            <input
+              class="form-input neu-border-inset"
+              type="password"
+              v-model="user_password"
+            />
 
-          <div class="submit ">
-            <button type="Submit" class="mb-3 btn button-body">
-              <h5 id="sub" class="text-black mb-0">Login</h5>
-            </button>
-          </div>
-          <div>
-            <p class="pb-4">
-              Not a member?
-              <router-link :to="{ name: 'Register' }"
-                >Create an account</router-link
-              >
-            </p>
-          </div>
-        </form>
+            <div class="submit">
+              <button type="Submit" class="mb-3 btn button-body">
+                <h5 id="sub" class="text-black mb-0">Login</h5>
+              </button>
+            </div>
+            <div>
+              <p class="pb-4">
+                Not a member?
+                <router-link :to="{ name: 'Register' }"
+                  >Create an account</router-link
+                >
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -53,11 +53,12 @@ export default {
   },
   methods: {
     login() {
-      fetch("https://groupapibackend.herokuapp.com/users", {
+      fetch("https://laundry-villa.herokuapp.com/users", {
         method: "PATCH",
         body: JSON.stringify({
           user_email: this.user_email,
           user_password: this.user_password,
+          user_role: this.user_role,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -66,9 +67,21 @@ export default {
         .then((response) => response.json())
         .then((json) => {
           localStorage.setItem("jwt", json.jwt);
-          alert("User logged in");
-          this.$router.push({ name: "Products" });
+          alert("Logging in...");
+          this.$router.push({ name: "Service" });
         })
+        // .then((response) => response.json())
+        // .then((json) => {
+        //   localStorage.setItem("jwt", json.jwt);
+        //   alert("User logged in");
+        //   if(user_role === 'admin'){
+        //     this.$router.push({ name: "Service" });
+        //   }
+        //   else{
+        //     this.$router.push({ name: "Home" });
+        //   }
+
+        // })
         .catch((err) => {
           alert(err);
         });
@@ -87,7 +100,7 @@ export default {
   top: 110px;
 }
 
-section{
+section {
   height: 100vh;
 }
 form {
@@ -96,13 +109,12 @@ form {
   text-align: left;
   border-radius: 10px;
   background-color: white;
-box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
--webkit-box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
--moz-box-shadow: -10px 13px 20px 9px rgba(220,220,220,0.94);
-  
+  box-shadow: -10px 13px 20px 9px rgba(220, 220, 220, 0.94);
+  -webkit-box-shadow: -10px 13px 20px 9px rgba(220, 220, 220, 0.94);
+  -moz-box-shadow: -10px 13px 20px 9px rgba(220, 220, 220, 0.94);
 }
-.form-cont{
-  width:50%;
+.form-cont {
+  width: 50%;
 }
 label {
   color: rgb(0, 0, 0);
@@ -171,39 +183,38 @@ button:hover {
   justify-content: center !important;
 }
 
-
 @media all and (max-width: 991px) {
   .form-cont {
     width: 60%;
   }
 
   label {
-  color: rgb(0, 0, 0);
-  display: inline-block;
-  margin: 15px 0 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
-input {
-  display: block;
-  padding: 10px 6px;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  color: rgb(0, 0, 0);
-  background-color: rgba(233, 221, 221, 0.25);
-}
-.button-body {
-  background: rgba(139, 102, 96, 0.924);
-  border: 0;
-  padding: 10px 20px;
-  margin-top: 20px;
-  color: rgb(255, 255, 255);
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 20px !important;
-}
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    margin: 15px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+  }
+  input {
+    display: block;
+    padding: 10px 6px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    color: rgb(0, 0, 0);
+    background-color: rgba(233, 221, 221, 0.25);
+  }
+  .button-body {
+    background: rgba(139, 102, 96, 0.924);
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px !important;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -216,10 +227,9 @@ input {
   .form-cont {
     width: 80%;
   }
-  .login-title  {
-  top: 110px;
-}
-
+  .login-title {
+    top: 110px;
+  }
 }
 @media all and (max-width: 400px) {
 }

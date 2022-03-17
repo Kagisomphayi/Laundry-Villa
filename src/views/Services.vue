@@ -52,7 +52,45 @@
           </div>
         </div>
         <!-- CARDS -->
-        <ServiceCards />
+  <section id="products" class="products">
+    <div class="container">
+      <div v-if="services" class="pb-5 cont justify-content-center">
+        <div class="row col-lg-12 proji" style="row-gap: 30px">
+          <div
+            v-for="service in filteredServices"
+            :key="service._id"
+            class="col-lg-3 col-sm-6 col-6 col-md-4"
+            style="display: flex; justify-content: center"
+          >
+            <div class="card shadow ani-card">
+              <img
+                :src="service.service_image"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h4 class="card-title text-black">
+                  {{ service.laundry_service }}
+                </h4>
+                <p class="card-text text-black">R{{ service.service_price }}</p>
+              </div>
+
+              <div class="card-body card-body-button text-center">
+                <button
+                  type="button"
+                  class="btn border-dark card-btn"
+                  @click="addToBookings(index)"
+                >
+                  <i class="bi mx-1 bi-pen"></i>BOOK!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loading" v-else></div>
+    </div>
+  </section>
       </div>
       <!-- <div class="loading" v-else></div> -->
     </div>
@@ -60,10 +98,27 @@
 </template>
 
 <script>
-import ServiceCards from "../components/ServiceCards";
+import axios from "axios";
 export default {
+  
   components: {
-    ServiceCards
+
+  },
+    data() {
+    return {
+      services: null,
+      search:''
+    };
+  },
+
+    // GETTING SERVICES
+  mounted() {
+    fetch("https://laundry-villa.herokuapp.com/services")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.services = data;
+      });
   },
   methods: {
     // ADD TO CART(not done)
@@ -98,7 +153,7 @@ export default {
         alert("User not logged in");
         return this.$router.push({ name: "Login" });
       }
-      fetch("https://groupapibackend.herokuapp.com/products", {
+      fetch("https://laundry-villa.herokuapp.com/services", {
         method: "POST",
         body: JSON.stringify({
           product_name: this.product_name,
@@ -120,6 +175,13 @@ export default {
         });
     },
   },
+  computed:{
+    filteredServices:function(){
+      return this.services.filter((service) => {
+        return service.laundry_service.match(this.search);
+      })
+    }
+  }
 };
 </script>
 
@@ -130,7 +192,7 @@ export default {
   background-color: rgba(139, 102, 96, 0.924);
   z-index: 100;
   position: fixed;
-  top: 140px;
+  top: 110px;
 }
 
 .services {
@@ -151,6 +213,18 @@ export default {
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+}
+.card-img-top {
+  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+.card{
+  /* height: 300px; */
+  width: 18rem
+}
+.card-body-button{
+  padding-top: 0px;
 }
 @-webkit-keyframes spin {
   0% {

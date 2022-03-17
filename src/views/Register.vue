@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     register() {
-      fetch("https://groupapibackend.herokuapp.com/users", {
+      fetch("https://laundry-villa.herokuapp.com/users", {
         method: "POST",
         body: JSON.stringify({
           user_name: this.user_name,

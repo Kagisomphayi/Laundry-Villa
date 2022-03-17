@@ -3,7 +3,10 @@
   <div class="">
     <nav class="navbar border-bottom navbar-expand-lg navbar-light bg-light fixed-top">
       <div class=" container">
-        <a class="navbar-brand" href="#">Laundry Villa</a>
+        <div>
+          <a class="navbar-brand" href="#"><img class="logo" src="../assets/Logo.png" alt="logo"></a>
+        </div>
+        
         <button
           class="btn btn-primary offie"
           type="button"
@@ -115,6 +118,11 @@ a{
 body {
   padding-top: 55px;
 }
+.logo {
+width:70px;
+border: solid 1px;
+border-radius: 100%;
+   }
 nav {
   background-color: rgb(255, 255, 255) !important;
   position: fixed;

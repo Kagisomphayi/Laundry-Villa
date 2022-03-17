@@ -91,33 +91,33 @@
           </div>
         
         <div class="form-cont col-md-6 col-sm-12 col- col-lg-6 col-12">
-          <form @submit.prevent="register" class="contactMe container">
+          <form @submit.prevent="handleSubmit" class="contactMe container">
              <div class="text-center"><h5 class=" p-2">Contact us</h5></div>
             <label class="text-black">Name:</label>
             <input
               class="form-input neu-border-inset"
               type="text"
-              v-model="user_name"
+              v-model="name"
             />
             <label class="text-black">Email:</label>
             <input
               class="form-input neu-border-inset"
               type="email"
-              v-model="user_email"
+              v-model="email"
             />
 
             <label class="text-black">Subject:</label>
             <input
               class="form-input neu-border-inset"
               type="text"
-              v-model="user_contactNumber"
+              v-model="subject"
             />
 
             <label class="text-black">Message:</label>
             <input
               class="form-input message-input neu-border-inset"
               type="text"
-              v-model="user_password"
+              v-model="message"
             />
 
             <div class="submit mb-3">
@@ -135,32 +135,32 @@
 
 <script>
 export default {
-  // data() {
-  //   return {
-  //     name: "",
-  //     email: "",
-  //     subject: "",
-  //     message: "",
-  //   };
-  // },
-  //   methods: {
-  //     handleSubmit() {
-  // fetch('https://kagisomphayiportfolio.herokuapp.com/contact', {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     name: this.name,
-  //     email: this.email,
-  //     subject: this.subject,
-  //     message: this.message,
-  //   }),
-  //   headers: {
-  //     'Content-type': 'application/json; charset=UTF-8',
-  //   },
-  // })
-  //   .then((response) => response.json())
-  //   .then((json) => console.log(json));
-  //     },
-  //   },
+  data() {
+    return {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    };
+  },
+    methods: {
+      handleSubmit() {
+  fetch('http://localhost:3500/contact', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: this.name,
+      email: this.email,
+      subject: this.subject,
+      message: this.message,
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+      },
+    },
 };
 </script>
 
