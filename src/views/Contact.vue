@@ -145,7 +145,7 @@ export default {
   },
     methods: {
       handleSubmit() {
-  fetch('http://localhost:3500/contact', {
+  fetch('https://laundry-villa.herokuapp.com/contact', {
     method: 'POST',
     body: JSON.stringify({
       name: this.name,

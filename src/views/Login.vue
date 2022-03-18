@@ -53,12 +53,12 @@ export default {
   },
   methods: {
     login() {
-      fetch("https://laundry-villa.herokuapp.com/users", {
+
+        fetch("http://localhost:3500/users", {
         method: "PATCH",
         body: JSON.stringify({
           user_email: this.user_email,
           user_password: this.user_password,
-          user_role: this.user_role,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -66,25 +66,51 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          localStorage.setItem("jwt", json.jwt);
-          alert("Logging in...");
-          this.$router.push({ name: "Service" });
+          if(json.jwt){
+            localStorage.setItem("jwt", json.jwt);
+          }
+          if(localStorage.getItem("jwt")){
+            this.$router.push({ name: "Service" });
+          }
+          else{
+            alert("The Email or Password you entered are Incorrect");
+          }
         })
-        // .then((response) => response.json())
-        // .then((json) => {
-        //   localStorage.setItem("jwt", json.jwt);
-        //   alert("User logged in");
-        //   if(user_role === 'admin'){
-        //     this.$router.push({ name: "Service" });
-        //   }
-        //   else{
-        //     this.$router.push({ name: "Home" });
-        //   }
-
-        // })
         .catch((err) => {
           alert(err);
         });
+      // fetch("https://laundry-villa.herokuapp.com/users", {
+      //   method: "PATCH",
+      //   body: JSON.stringify({
+      //     user_email: this.user_email,
+      //     user_password: this.user_password,
+      //     user_role: this.user_role,
+      //   }),
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8",
+      //   },
+      // })
+      //   .then((response) => response.json())
+      //   .then((json) => {
+      //     localStorage.setItem("jwt", json.jwt);
+      //     alert("Logging in...");
+      //     this.$router.push({ name: "Service" });
+      //   })
+      //   // .then((response) => response.json())
+      //   // .then((json) => {
+      //   //   localStorage.setItem("jwt", json.jwt);
+      //   //   alert("User logged in");
+      //   //   if(user_role === 'admin'){
+      //   //     this.$router.push({ name: "Service" });
+      //   //   }
+      //   //   else{
+      //   //     this.$router.push({ name: "Home" });
+      //   //   }
+
+      //   // })
+      //   .catch((err) => {
+      //     alert(err);
+      //   });
     },
   },
 };

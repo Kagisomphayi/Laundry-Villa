@@ -7,14 +7,11 @@
       </div>
     </div>
     <div class="container justify-content-center">
-      <div class="pb-5 cont ">
+      <div class="pb-5 cont">
         <!-- SORT/FILTER/ADD -->
         <div>
           <div class="">
-            <div
-              style=""
-              class="sort-content justify-content-center row"
-            >
+            <div style="" class="sort-content justify-content-center row">
               <div class="col-10 col-md-8 col-lg-3">
                 <h6>SortByPrice:</h6>
                 <select
@@ -39,11 +36,15 @@
                   <option value="descending">Descending</option>
                 </select>
               </div>
-              <div  class="col-10 col-md-8 col-lg-3" id="main">
-                <h6>Filter:</h6> 
-                <label >
-                  <input   placeholder="Search service" type="text" v-model="search" />
-                </label >
+              <div class="col-10 col-md-8 col-lg-3" id="main">
+                <h6>Filter:</h6>
+                <label>
+                  <input
+                    placeholder="Search service"
+                    type="text"
+                    v-model="search"
+                  />
+                </label>
                 <!-- <div v-for="customer in filteredCustomers">
                   <span>{{ customer.firstName }} {{ customer.lastName }}</span>
                 </div> -->
@@ -52,45 +53,45 @@
           </div>
         </div>
         <!-- CARDS -->
-  <section id="products" class="products">
-    <div class="container">
-      <div v-if="services" class="pb-5 cont justify-content-center">
-        <div class="row col-lg-12 proji" style="row-gap: 30px">
-          <div
-            v-for="service in filteredServices"
-            :key="service._id"
-            class="col-lg-3 col-sm-6 col-6 col-md-4"
-            style="display: flex; justify-content: center"
-          >
-            <div class="card shadow ani-card">
-              <img
-                :src="service.service_image"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h4 class="card-title text-black">
-                  {{ service.laundry_service }}
-                </h4>
-                <p class="card-text text-black">R{{ service.service_price }}</p>
-              </div>
-
-              <div class="card-body card-body-button text-center">
-                <button
-                  type="button"
-                  class="btn border-dark card-btn"
-                  @click="addToBookings(index)"
+        <section id="products" class="products">
+          <div class="container">
+            <div v-if="services" class="pb-5 cont justify-content-center">
+              <div class="row col-lg-12 proji" style="row-gap: 30px">
+                <div
+                  v-for="service in filteredServices"
+                  :key="service._id"
+                  class="col-lg-3 col-sm-6 col-6 col-md-4"
+                  style="display: flex; justify-content: center"
                 >
-                  <i class="bi mx-1 bi-pen"></i>BOOK!
-                </button>
+                  <div class="card shadow ani-card">
+                    <img
+                      :src="service.service_image"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h4 class="card-title text-black">
+                        {{ service.laundry_service }}
+                      </h4>
+                      <p class="card-text text-black">
+                        R{{ service.service_price }}
+                      </p>
+                    </div>
+
+                    <div class="card-body card-body-button text-center">
+                      <button type="button" class="btn border-dark card-btn">
+                        <router-link :to="{name: 'ServiceDetails', params: {id: service._id}}">More details</router-link>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+            <div v-else class="load">
+              <div class="loading"></div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="loading" v-else></div>
-    </div>
-  </section>
+        </section>
       </div>
       <!-- <div class="loading" v-else></div> -->
     </div>
@@ -100,18 +101,15 @@
 <script>
 import axios from "axios";
 export default {
-  
-  components: {
-
-  },
-    data() {
+  components: {},
+  data() {
     return {
       services: null,
-      search:''
+      search: "",
     };
   },
 
-    // GETTING SERVICES
+  // GETTING SERVICES
   mounted() {
     fetch("https://laundry-villa.herokuapp.com/services")
       .then((res) => res.json())
@@ -175,17 +173,20 @@ export default {
         });
     },
   },
-  computed:{
-    filteredServices:function(){
+  computed: {
+    filteredServices: function () {
       return this.services.filter((service) => {
         return service.laundry_service.match(this.search);
-      })
-    }
-  }
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
+.load {
+  height: 100vh;
+}
 .price-title {
   height: 40px;
   width: 100%;
@@ -219,11 +220,11 @@ export default {
   height: 200px;
   object-fit: cover;
 }
-.card{
+.card {
   /* height: 300px; */
-  width: 18rem
+  width: 18rem;
 }
-.card-body-button{
+.card-body-button {
   padding-top: 0px;
 }
 @-webkit-keyframes spin {
@@ -280,11 +281,11 @@ button:hover {
 .subtitlee {
   margin-top: 70px;
 }
-input{
-  width:100% !important;
+input {
+  width: 100% !important;
 }
-label{
-width: 100%;
+label {
+  width: 100%;
 }
 .containe {
   justify-content: center !important;
@@ -319,14 +320,13 @@ width: 100%;
     margin-top: 70px;
   }
   .services {
-  padding-top: 130px;
-}
-.price-title {
-  position: fixed;
-  top: 110px;
-}
+    padding-top: 130px;
+  }
+  .price-title {
+    position: fixed;
+    top: 110px;
+  }
 }
 @media all and (max-width: 400px) {
 }
-
 </style>
