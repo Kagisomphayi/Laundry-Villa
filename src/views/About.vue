@@ -1,6 +1,6 @@
 <template>
 <div class="about-title">
-  <div class="container text-center">
+  <div class="container abbout text-center">
     <p class="text-white p-2">
       About
     </p>
