@@ -1,12 +1,16 @@
 <template>
   <!-- main bar -->
   <div class="">
-    <nav class="navbar border-bottom navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class=" container">
+    <nav
+      class="navbar border-bottom navbar-expand-lg navbar-light bg-light fixed-top"
+    >
+      <div class="container">
         <div>
-          <a class="navbar-brand" href="#"><img class="logo" src="../assets/Logo.png" alt="logo"></a>
+          <a class="navbar-brand" href="#"
+            ><img class="logo" src="../assets/Logo.png" alt="logo"
+          /></a>
         </div>
-        
+
         <button
           class="btn btn-primary offie"
           type="button"
@@ -28,28 +32,44 @@
               </button>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"><router-link to="/">Home</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/">Home</router-link></a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"><router-link to="/service">Service Prices</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/service">Service Prices</router-link></a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2" ><router-link to="/faqs">About</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/faqs">About</router-link></a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2" ><router-link to="/contact">Contact</router-link></a>
-            </li>
-                        <li class="nav-item">
-              <a class="nav-link text-truncate py-2" href="#spy3"><router-link to="/confirm">Bookings</router-link></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate " ><router-link class="p-2 m-0 login" to="/login">Login</router-link></a>
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/contact">Contact</router-link></a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate "><router-link class="p-2 mx-2 register" to="/register">Register</router-link></a>
+              <a class="nav-link text-truncate py-2" href="#spy3"
+                ><router-link to="/confirm">Bookings</router-link></a
+              >
             </li>
-
-
+            <li class="nav-item">
+              <a class="nav-link text-truncate"
+                ><router-link class="p-2 m-0 login" to="/login"
+                  >Login</router-link
+                ></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate"
+                ><router-link class="p-2 mx-2 register" to="/register"
+                  >Register</router-link
+                ></a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -76,27 +96,41 @@
     <div class="offcanvas-body">
       <div class="dropdown mt-3 justify-content-right">
         <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
-            <li class="nav-item">
-              <a class="nav-link text-truncate"><router-link to="/">Home</router-link></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate"><router-link to="/service">Service Prices</router-link></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate" ><router-link to="/faqs">About</router-link></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate" ><router-link to="/contact">Contact</router-link></a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-truncate " ><router-link to="/login">Login</router-link></a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-truncate "><router-link to="/register">Register</router-link></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate" href="#spy3"><router-link to="/confirm">Bookings</router-link></a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/">Home</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/service">Service Prices</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/faqs">About</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/contact">Contact</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/login">Login</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link to="/register">Register</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate" href="#spy3"
+              ><router-link to="/confirm">Bookings</router-link></a
+            >
+          </li>
         </ul>
       </div>
     </div>
@@ -108,26 +142,26 @@ export default {};
 </script>
 
 <style scoped>
-
-.login, .register{
+.login,
+.register {
   border: solid 2px rgba(10, 81, 139, 0.979);
 }
-a{
+a {
   text-decoration-line: none;
 }
 body {
   padding-top: 55px;
 }
 .logo {
-width:70px;
-border: solid 1px;
-border-radius: 100%;
-   }
+  width: 70px;
+  border: solid 1px;
+  border-radius: 100%;
+}
 nav {
   background-color: rgb(255, 255, 255) !important;
   position: fixed;
   top: 40px;
-  height:70px;
+  height: 70px;
 }
 /* #nav{
   padding: 0;

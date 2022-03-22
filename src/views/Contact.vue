@@ -98,12 +98,14 @@
               class="form-input neu-border-inset"
               type="text"
               v-model="name"
+              required
             />
             <label class="text-black">Email:</label>
             <input
               class="form-input neu-border-inset"
               type="email"
               v-model="email"
+              required
             />
 
             <label class="text-black">Subject:</label>
@@ -118,6 +120,7 @@
               class="form-input message-input neu-border-inset"
               type="text"
               v-model="message"
+              required
             />
 
             <div class="submit mb-3">
@@ -158,7 +161,8 @@ export default {
     },
   })
     .then((response) => response.json())
-    .then((json) => console.log(json));
+    .then((data) =>(this.contact = data));
+    alert("Message successfully sent").catch((err)=> console.log(err.message));
       },
     },
 };

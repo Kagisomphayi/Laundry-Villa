@@ -79,38 +79,6 @@ export default {
         .catch((err) => {
           alert(err);
         });
-      // fetch("https://laundry-villa.herokuapp.com/users", {
-      //   method: "PATCH",
-      //   body: JSON.stringify({
-      //     user_email: this.user_email,
-      //     user_password: this.user_password,
-      //     user_role: this.user_role,
-      //   }),
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      //   },
-      // })
-      //   .then((response) => response.json())
-      //   .then((json) => {
-      //     localStorage.setItem("jwt", json.jwt);
-      //     alert("Logging in...");
-      //     this.$router.push({ name: "Service" });
-      //   })
-      //   // .then((response) => response.json())
-      //   // .then((json) => {
-      //   //   localStorage.setItem("jwt", json.jwt);
-      //   //   alert("User logged in");
-      //   //   if(user_role === 'admin'){
-      //   //     this.$router.push({ name: "Service" });
-      //   //   }
-      //   //   else{
-      //   //     this.$router.push({ name: "Home" });
-      //   //   }
-
-      //   // })
-      //   .catch((err) => {
-      //     alert(err);
-      //   });
     },
   },
 };

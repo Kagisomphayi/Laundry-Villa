@@ -69,6 +69,7 @@
                       class="card-img-top"
                       alt="..."
                     />
+                    <div>{{service._id}}</div>
                     <div class="card-body">
                       <h4 class="card-title text-black">
                         {{ service.laundry_service }}
