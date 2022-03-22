@@ -1,7 +1,20 @@
 <template>
+    <div class="price-title">
+      <div class="container text-center">
+        <ul class="">
+          <a class="nav-link  text-truncate p-0 m-2"
+            ><router-link class="text-white" to="/admin/services">Services</router-link></a
+          >
 
-<div>
-<table>
+          <a class="nav-link text-truncate p-0 m-2"
+            ><router-link class="text-white" to="/admin/users">Users</router-link></a
+          >
+        </ul>
+      </div>
+    </div>
+<div class="table-content">
+    <div class="container">
+      <table>
   <thead>
     <tr>
       <th>First Name</th>
@@ -43,6 +56,8 @@
     </tr>
   </tbody>
 </table>   
+    </div>
+  
 </div>
  
 </template>
@@ -54,8 +69,26 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration-line: none;
+}
+.nav-link {
+  display: inline;
+}
+.table-content{
+    padding-top: 200px;
+}
+.price-title {
+  height: 40px;
+  width: 100%;
+  background-color: rgba(139, 102, 96, 0.924);
+  z-index: 100;
+  position: fixed;
+  top: 110px;
+  
+}
 table { 
-	width: 750px; 
+	width: 100%; 
 	border-collapse: collapse; 
 	margin:50px auto;
 	}
@@ -86,6 +119,9 @@ and also iPads specifically.
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
+    .table-content{
+    padding-top: 150px;
+}
 
 	table { 
 	  	width: 100%; 
