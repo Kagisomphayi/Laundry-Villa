@@ -111,7 +111,7 @@ export default {
 
   // GETTING SERVICES
   mounted() {
-    fetch("http://localhost:3500/services")
+    fetch("https://laundry-villa.herokuapp.com/services")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

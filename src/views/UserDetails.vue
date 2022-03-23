@@ -1,35 +1,37 @@
 <template>
-    <div class="price-title">
-      <div class="container text-center">
-        <p class="text-white p-2">User Details</p>
-      </div>
+  <div class="price-title">
+    <div class="container text-center">
+      <p class="text-white p-2">User Details</p>
     </div>
+  </div>
   <div class="container content">
     <div v-if="user">
-      <div class="row col-lg-12 proji justify-content-center" style="row-gap: 10px; column-gap: 1px">
+      <div
+        class="row col-lg-12 proji justify-content-center"
+        style="row-gap: 10px; column-gap: 1px"
+      >
         <div class="card pt-5 col-lg-3 text-center col-md-6">
-        <i class="bi bi-person-circle"></i>
-          <h1>{{user.user_name}}</h1>
+          <i class="bi bi-person-circle"></i>
+          <h1>{{ user.user_name }}</h1>
           <p class="title">{{ user.user_email }}</p>
           <p>{{ user.user_contactNumber }}</p>
           <p>{{ user.join_date }}</p>
           <div class="d-inline">
-          <button
-            type="button"
-            class="btn mx-2 card-btn"
-            @click.prevent="updateUser(user._id)"
-          >
-            <i class="bi bi-pencil"></i>
-          </button>
-                    <button
-            type="button"
-            class="btn mx-2 card-btn"
-            @click.prevent="deleteUser(user._id)"
-          >
-            <i class="bi bi-trash3"></i>
-          </button>              
+            <button
+              type="button"
+              class="btn mx-2 card-btn"
+              @click.prevent="updateUser(user._id)"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button
+              type="button"
+              class="btn mx-2 card-btn"
+              @click.prevent="deleteUser(user._id)"
+            >
+              <i class="bi bi-trash3"></i>
+            </button>
           </div>
-
         </div>
       </div>
     </div>
@@ -37,6 +39,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   props: ["id"],
   data() {
@@ -72,7 +75,7 @@ export default {
   //       });
   //   },
   mounted() {
-    fetch("http://localhost:3500/users/" + this.id, {
+    fetch("https://laundry-villa.herokuapp.com/users/" + this.id, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -87,31 +90,37 @@ export default {
       });
   },
   methods: {
-    // DELETE PRODUCT(done)
-    deleteUser() {
-      let apiURL = ``;
-      let indexOfArrayItem = this.users.findIndex((i) => i._id === id);
+    deleteUser(id) {
+      const config = {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+      let apiURL = `https://laundry-villa.herokuapp.com/users/${id}`;
+      let indexOfArrayItem = this.user.findIndex((i) => i._id === id);
       if (window.confirm("Do you really want to delete?")) {
         axios
-          .delete(apiURL)
+          .delete(apiURL, config)
           .then(() => {
-            this.users.splice(indexOfArrayItem, 1);
+            this.user.splice(indexOfArrayItem, 1);
           })
           .catch((error) => {
             console.log(error);
           });
       }
     },
-  },
+  }
+  
 };
 </script>
 
 <style scoped>
-.bi-person-circle{
-    font-size: 150px;
+.bi-person-circle {
+  font-size: 150px;
 }
-.content{
-    padding-top: 200px;
+.content {
+  padding-top: 200px;
 }
 .price-title {
   height: 40px;

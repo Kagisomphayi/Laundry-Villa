@@ -53,7 +53,7 @@ export default {
   },
   // GETTING SERVICES
   mounted() {
-    fetch("http://localhost:3500/users/")
+    fetch("https://laundry-villa.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
