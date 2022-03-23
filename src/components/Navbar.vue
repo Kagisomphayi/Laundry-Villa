@@ -70,6 +70,27 @@
                 ></a
               >
             </li>
+          <li class="nav-item dropdownrounded" v-if="!isLoggedIn">
+            <a
+              class="nav-link nav-text text-black dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              ><i class="bi bi-person-fill me-2"></i>Profile</a
+            >
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdown"
+            >
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><router-link class="" to="/users">View Users</router-link></a
+                >
+              </li>
+            </ul>
+          </li>                      
           </ul>
         </div>
       </div>
@@ -153,7 +174,7 @@ body {
   padding-top: 55px;
 }
 .logo {
-  width: 70px;
+  width: 55px;
   border: solid 1px;
   border-radius: 100%;
 }

@@ -69,7 +69,6 @@
                       class="card-img-top"
                       alt="..."
                     />
-                    <div>{{service._id}}</div>
                     <div class="card-body">
                       <h4 class="card-title text-black">
                         {{ service.laundry_service }}
@@ -112,7 +111,7 @@ export default {
 
   // GETTING SERVICES
   mounted() {
-    fetch("https://laundry-villa.herokuapp.com/services")
+    fetch("http://localhost:3500/services")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

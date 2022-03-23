@@ -21,45 +21,23 @@
       <table>
         <thead>
           <tr>
-            <th>user</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Job Title</th>
-            <th>Twitter</th>
+            <th>user ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact number</th>
+            <th>Join date</th>
+            <th>More details</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="service in services" :key="service.index">
-            <td data-column="First Name">{{service.index}}</td>
-            <td data-column="First Name">{{service.First_name}}</td>
-            <td data-column="Last Name">{{service.Last_name}}</td>
-            <td data-column="Job Title">{{service.Job_title}}</td>
-            <td data-column="Twitter">{{service.Twitter}}</td>
+        <tbody  v-for="user in users" :key="user._id">
+          <tr >
+              <td data-column="User Id">{{ user._id }}</td>
+              <td data-column="User Name">{{ user.user_name }}</td>
+              <td data-column="User Email">{{ user.user_email }}</td>
+              <td data-column="Contact Number">{{ user.user_contactNumber }}</td>
+              <td data-column="Join Date">{{ user.join_date }}</td>
+              <td data-column="More Details"><router-link class="text-black more-details" :to="{name: 'User', params: {id: user._id}}"><i class="bi text-black bi-three-dots"></i></router-link></td>
           </tr>
-          <!-- <tr>
-      <td data-column="First Name">Andor</td>
-      <td data-column="Last Name">Nagy</td>
-      <td data-column="Job Title">Designer</td>
-      <td data-column="Twitter">@andornagy</td>
-    </tr>
-    <tr>
-      <td data-column="First Name">Tamas</td>
-      <td data-column="Last Name">Biro</td>
-      <td data-column="Job Title">Game Tester</td>
-      <td data-column="Twitter">@tamas</td>
-    </tr>
-    <tr>
-      <td data-column="First Name">Zoli</td>
-      <td data-column="Last Name">Mastah</td>
-      <td data-column="Job Title">Developer</td>
-      <td data-column="Twitter">@zoli</td>
-    </tr>
-    <tr>
-      <td data-column="First Name">Szabi</td>
-      <td data-column="Last Name">Nagy</td>
-      <td data-column="Job Title">Chief Sandwich Eater</td>
-      <td data-column="Twitter">@szabi</td>
-    </tr> -->
         </tbody>
       </table>
     </div>
@@ -70,27 +48,40 @@
 export default {
   data() {
     return {
-      services: [
-        {
-          
-          First_name: "Kagiso",
-          Last_name: "Mphayi",
-          Job_title: "Web Dev",
-          Twitter: "Kagiii",
-        },
-        {
-          First_name: "will",
-          Last_name: "Mphayuuuu",
-          Job_title: "Web Deveee",
-          Twitter: "Kagiidddi",
-        },
-      ],
+      users: null,
     };
+  },
+  // GETTING SERVICES
+  mounted() {
+    fetch("http://localhost:3500/users/")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.users = data;
+      });
   },
 };
 </script>
 
 <style scoped>
+.more-details{
+    background: rgba(139, 102, 96, 0.924);
+  border: 0;
+  padding: 7px 15px;
+  margin-top: 20px;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 30px !important;
+}
+button:hover {
+  opacity: 0.8;
+  background: rgba(10, 81, 139, 0.979);
+  color: white !important;
+}
+.bi-three-dots:hover {
+  color: rgb(255, 255, 255) !important;
+}
 a {
   text-decoration-line: none;
 }
@@ -120,7 +111,7 @@ tr:nth-of-type(odd) {
 }
 
 th {
-  background: #3498db;
+  background: rgba(10, 81, 139, 0.979);
   color: white;
   font-weight: bold;
 }

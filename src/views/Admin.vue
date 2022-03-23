@@ -8,7 +8,7 @@
     <div class="cont container">
       <div class="formm">
         <div class="form-cont">
-          <form @submit.prevent="login" class="contactMe container mt-5">
+          <form @submit.prevent="logIn" class="contactMe container mt-5">
             <label class="text-black">Email:</label>
             <input
               class="form-input neu-border-inset"
@@ -44,9 +44,8 @@ export default {
     };
   },
   methods: {
-    login() {
-
-        fetch("http://localhost:3500/users", {
+    logIn() {
+        fetch("https://laundry-villa.herokuapp.com/users", {
         method: "PATCH",
         body: JSON.stringify({
           user_email: this.user_email,
@@ -62,7 +61,7 @@ export default {
             localStorage.setItem("jwt", json.jwt);
           }
           if(localStorage.getItem("jwt")){
-            this.$router.push({ name: "Service" });
+            this.$router.push({ name: "AdminServices" });
           }
           else{
             alert("The Email or Password you entered are Incorrect");
@@ -73,6 +72,31 @@ export default {
         });
     },
   },
+  //   mounted(){
+  //     if(localStorage.getItem("jwt")){
+  //         fetch("http://localhost:3500/users", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-type": "application/json; charset=UTF-8",
+  //       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //         let admin = json.admin;
+  //       if(admin == true){
+  //           this.$router.push({ name: "AdminServices" });
+  //       }
+  //       if(admin ==false){
+  //           alert("Not admin")
+  //           this.$router.push({ name: "Home" });
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       alert(err);
+  //     });
+  //     }
+  // }
 };
 </script>
 
