@@ -53,7 +53,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link text-truncate py-2" href="#spy3"
-                ><router-link to="/confirm">Bookings</router-link></a
+                ><router-link to="/confirm">Booking</router-link></a
               >
             </li>
             <li class="nav-item">
@@ -70,28 +70,15 @@
                 ></a
               >
             </li>
-          <li class="nav-item dropdownrounded" v-if="!isLoggedIn">
-            <a
-              class="nav-link nav-text text-black dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              ><i class="bi bi-person-fill me-2"></i>Profile</a
-            >
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdown"
-            >
-              <li>
-                <a class="dropdown-item" href="#"
-                  ><router-link class="" to="/users">View Users</router-link></a
-                >
-              </li>
-            </ul>
-          </li>                      
+                                
           </ul>
+          <div class="dropdown">
+  <button class="dropbtn">Profile</button>
+  <div class="dropdown-content">
+    <a href="#"><i class="bi bi-person-circle"></i>Profile</a>
+    <a v-on:click="logout" href="#"><i class="bi bi-box-arrow-left"></i>Logout</a>
+  </div>
+</div>
         </div>
       </div>
     </nav>
@@ -149,20 +136,74 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-truncate" href="#spy3"
-              ><router-link to="/confirm">Bookings</router-link></a
+              ><router-link to="/confirm">Booking</router-link></a
             >
           </li>
         </ul>
+        
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Login",
+  methods:{
+    logout()
+    {
+      localStorage.clear();
+      this.$router.push({ name: "Login" })
+      }
+  }
+};
 </script>
 
 <style scoped>
+.dropbtn {
+  background-color: #ffffff;
+  color:  rgba(10, 81, 139, 0.979);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+}
+.dropbtn:hover {
+  background-color: #ffffff;
+  color:  rgba(255, 255, 255, 0.979);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  font: bolder;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color:  rgba(10, 81, 139, 0.979);}
+
+
 .login,
 .register {
   border: solid 2px rgba(10, 81, 139, 0.979);

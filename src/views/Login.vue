@@ -52,9 +52,8 @@ export default {
     };
   },
   methods: {
-    login() {
-
-        fetch("http://localhost:3500/users", {
+        login() {
+        fetch("https://laundry-villa.herokuapp.com/users", {
         method: "PATCH",
         body: JSON.stringify({
           user_email: this.user_email,
@@ -80,7 +79,7 @@ export default {
           alert(err);
         });
     },
-  },
+  }
 };
 </script>
 

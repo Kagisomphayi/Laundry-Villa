@@ -13,27 +13,30 @@
           <div class="">
             <div style="" class="sort-content justify-content-center row">
               <div class="col-10 col-md-8 col-lg-3">
+                <h6>SortByTitle:</h6>
+                <select
+                  class="form-select text-center"
+                  name=""
+                  id="sortPrice"
+                  v-model="laundry_services" @change="sortTitle(laundy_services)"
+                  
+                >
+                <option value="">ALL</option>
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </select>
+              </div>
+              <div class="mx-1 col-10 col-md-8 col-lg-3">
                 <h6>SortByPrice:</h6>
                 <select
                   class="form-select text-center"
                   name=""
                   id="sortPrice"
-                  onchange="sortPrice()"
+                  v-model="service_price" @change="sortPrice(service_price)"
                 >
-                  <option value="ascending">Ascending</option>
-                  <option value="descending">Descending</option>
-                </select>
-              </div>
-              <div class="mx-1 col-10 col-md-8 col-lg-3">
-                <h6>SortByTitle:</h6>
-                <select
-                  class="form-select text-center"
-                  name=""
-                  id="sortTitle"
-                  onchange="sortTitle()"
-                >
-                  <option value="ascending">Ascending</option>
-                  <option value="descending">Descending</option>
+                <option value="">ALL</option>
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
                 </select>
               </div>
               <div class="col-10 col-md-8 col-lg-3" id="main">
@@ -74,7 +77,7 @@
                         {{ service.laundry_service }}
                       </h4>
                       <p class="card-text text-black">
-                        R{{ service.service_price }}
+                        R{{ service.service_price }} per kg
                       </p>
                     </div>
 
@@ -105,7 +108,10 @@ export default {
   data() {
     return {
       services: null,
+      filteredServices: null,
       search: "",
+      service_price:"",
+      laundry_service:"",
     };
   },
 
@@ -115,10 +121,30 @@ export default {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        this.services = data;
+        this.services=data;
+        this.filteredServices = data;
       });
   },
   methods: {
+    // SORT
+    sortPrice(dir) {
+      this.filteredServices = this.filteredServices.sort(
+        (a, b) => a.service_price- b.service_price
+      );
+      if (dir == "desc") this.filteredServices.reverse();
+    },
+    sortTitle(dir) {
+      this.filteredServices = this.filteredServices.sort((a, b) => {
+        if (a.laundry_service < b.laundry_service) {
+          return -1;
+        }
+        if (a.laundry_service > b.laundry_service) {
+          return 1;
+        }
+        return 0;
+      });
+      if (dir == "desc") this.filteredServices.reverse();
+    },
     // ADD TO CART(not done)
     addToCart(index) {
       this.cart.push(index);

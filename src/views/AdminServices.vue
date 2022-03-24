@@ -150,7 +150,7 @@ export default {
   // },
    mounted() {
     if (localStorage.getItem("jwt")) {
-      fetch("http://localhost:3500/users/", {
+      fetch("https://laundry-villa.herokuapp.com/users", {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -161,7 +161,7 @@ export default {
         .then((json) => {
           let admin = json.admin;
           if (admin == true) {
-            fetch("http://localhost:3500/services/", {
+            fetch("https://laundry-villa.herokuapp.com/services", {
               method: "GET",
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -175,7 +175,7 @@ export default {
                 alert(err);
                 console.log(err);
               });
-            fetch("http://localhost:3500/users/", {
+            fetch("https://laundry-villa.herokuapp.com/users", {
               method: "GET",
               headers: {
                 "Content-type": "application/json; charset=UTF-8",

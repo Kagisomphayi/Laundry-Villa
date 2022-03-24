@@ -72,31 +72,6 @@ export default {
         });
     },
   },
-  //   mounted(){
-  //     if(localStorage.getItem("jwt")){
-  //         fetch("http://localhost:3500/users", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-type": "application/json; charset=UTF-8",
-  //       Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //         let admin = json.admin;
-  //       if(admin == true){
-  //           this.$router.push({ name: "AdminServices" });
-  //       }
-  //       if(admin ==false){
-  //           alert("Not admin")
-  //           this.$router.push({ name: "Home" });
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       alert(err);
-  //     });
-  //     }
-  // }
 };
 </script>
 
