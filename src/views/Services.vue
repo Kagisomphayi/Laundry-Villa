@@ -108,10 +108,7 @@ export default {
   data() {
     return {
       services: null,
-      filteredServices: null,
       search: "",
-      service_price:"",
-      laundry_service:"",
     };
   },
 

@@ -31,19 +31,18 @@
         <div class="row"> 
             <div class="col-8 col-sm-7">
             <label class="text-black">Service:</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
-              <option value="3">Three</option>
+            <select required class="form-select" aria-label="Default select example">
+              <option selected>Select Service</option>
+              <option value="wash">Wash</option>
+              <option value="dry">Dry</option>
+              <option value="iron">Iron</option>              
+              <option value="iron and fold">Iron & Fold</option>
+              <option value="wash and dry">Wash & Dry</option>
+              <option value="wash,dry and iron">Wash,Dry & Iron</option>
+              <option value="curtains">Curtains</option>
+              <option value="couch covers">Couch Covers</option>
+              <option value="blankets">Blankets</option>
+              <option value="shoes">Shoes</option>
             </select>            
         </div>
         <div class="col-4 col-sm-5">

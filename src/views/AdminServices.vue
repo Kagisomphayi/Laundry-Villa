@@ -138,70 +138,15 @@ export default {
     };
   },
 
-  // // GETTING SERVICES
-  // mounted() {
-  //   if (localStorage.getItem("jwt")){}
-  //   fetch("https://laundry-villa.herokuapp.com/services")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       this.services = data;
-  //     });
-  // },
-   mounted() {
-    if (localStorage.getItem("jwt")) {
-      fetch("https://laundry-villa.herokuapp.com/users", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-          let admin = json.admin;
-          if (admin == true) {
-            fetch("https://laundry-villa.herokuapp.com/services", {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            })
-              .then((response) => response.json())
-              .then((json) => {
-                this.service = json;
-              })
-              .catch((err) => {
-                alert(err);
-                console.log(err);
-              });
-            fetch("https://laundry-villa.herokuapp.com/users", {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            })
-              .then((response) => response.json())
-              .then((json) => {
-                this.users = json;
-              })
-              .catch((err) => {
-                alert(err);
-              });
-          }
-          if (admin == false) {
-            alert("you are not admin");
-            this.$router.push({ name: "Home" });
-          }
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
-    else{
-      alert("Login")
-      this.$router.push({ name: "Admin" });
-    }
+  // GETTING SERVICES
+  mounted() {
+    if (localStorage.getItem("jwt")){}
+    fetch("https://laundry-villa.herokuapp.com/services")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.services = data;
+      });
   },
   methods: {
     // ADD TO CART(not done)

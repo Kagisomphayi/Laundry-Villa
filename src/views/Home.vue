@@ -56,26 +56,48 @@
     </div>
   </div>
   <section>
-    <div class=" container  text-center">
-    <h2 class="display-6 subtitle mt-5"><u>We Have The Best Services You Can Get</u> </h2>   
-        <div class="instructions text-black">
-      <div class="row  ">
-        <div class="col-lg-4 col-sm-4 coL-md-3 ">
-          <h5>Make A Booking</h5>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, esse? Officia ex, maiores praesentium eius velit ipsa quae distinctio quisquam quod illum, voluptatibus quam tempore nobis similique sequi molestiae accusantium.</p>
-        </div>
-        <div class="col col-lg-4 col-sm-4 coL-md-3 mx-">
-          <h5>Drop Your Laundry</h5>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eum impedit id voluptates laboriosam dicta numquam sit excepturi ipsa illo similique minus atque soluta aspernatur, explicabo vero deleniti odio accusantium?</p>
-        </div>
-        <div class="col col-lg-4 col-sm-4 coL-md-6">
-          <h5>Collect Your Laundry</h5>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae similique dignissimos incidunt distinctio quos molestias accusantium sint veritatis, quisquam dolorem voluptatum magni itaque quo consequuntur error, libero, sequi dicta voluptatibus?
+    <div class="container text-center">
+      <h2 class="display-6 subtitle mt-5">
+        <u>We Have The Best Services You Can Get</u>
+      </h2>
+      <div class="instructions text-black">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 coL-md-3">
+            <h5>Make A Booking</h5>
+            <div class="text-start ">
+          <table class="table table-bordered">
+            <tbody>
+              <tr class="">
+                <td>- Check our services</td>
+              </tr>
+              <tr>
+                <td>- Register/create an account</td>
+              </tr>
+              <tr>
+                <td>- Make a booking</td>
+              </tr>
+              <tr>
+                
+              </tr>
+            </tbody>
+          </table>              
+            </div>
+
+          </div>
+          <div class="col col-lg-4 col-sm-4 coL-md-3 mx-">
+            <h5>Drop Your Laundry</h5>
+            <p>
+              After you make a booking you are expected to drop your laundry 15-30 minutes before the time you booked. 
+            </p>
+          </div>
+          <div class="col col-lg-4 col-sm-4 coL-md-6">
+            <h5>Collect Your Laundry</h5>
+          When we are done with your laundry we will call you to come collect it.
+          We will also email you a quotation. You can make a payment on our provided banking details.
+          </div>
         </div>
       </div>
     </div>
-    </div>
-
   </section>
 </template>
 
@@ -89,7 +111,6 @@ export default {
 .d-block {
   height: 100vh;
   object-fit: cover;
-
 }
 
 .button-div {
@@ -101,6 +122,10 @@ export default {
   position: absolute;
   z-index: 100;
 }
+table, thead, tbody{border: white;}
+.table>:not(:first-child) {
+    border-top: 2px solid white;
+}
 .title {
   margin-top: 30%;
   color: rgba(10, 81, 139, 0.979);
@@ -109,15 +134,15 @@ export default {
 .carousel-control-prev {
   z-index: 999;
 }
-.subtitle{
-color: rgba(139, 102, 96, 0.924);;
-letter-spacing: 1px;
+.subtitle {
+  color: rgba(139, 102, 96, 0.924);
+  letter-spacing: 1px;
 }
 .instructions {
-  margin:100px 100px;
+  margin: 100px 100px;
 }
-h5{
-   color: rgba(10, 81, 139, 0.979);
+h5 {
+  color: rgba(10, 81, 139, 0.979);
 }
 /* RESPONSIVENESS */
 @media all and (max-width: 992px) {
