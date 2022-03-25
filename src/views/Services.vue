@@ -77,7 +77,7 @@
                         {{ service.laundry_service }}
                       </h4>
                       <p class="card-text text-black">
-                        R{{ service.service_price }} per kg
+                        R{{ service.service_price }} per basket
                       </p>
                     </div>
 

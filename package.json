@@ -17,5 +17,17 @@
     "@vue/cli-plugin-router": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
     "@vue/compiler-sfc": "^3.0.0"
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kagisomphayi/Laundry-Villa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kagisomphayi/Laundry-Villa/issues"
+  },
+  "homepage": "https://github.com/Kagisomphayi/Laundry-Villa#readme"
 }
