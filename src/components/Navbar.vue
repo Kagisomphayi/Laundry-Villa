@@ -102,45 +102,60 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <div class="dropdown mt-3 justify-content-right">
-        <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/">Home</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/service">Service Prices</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/faqs">About</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/contact">Contact</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/login">Login</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate"
-              ><router-link to="/register">Register</router-link></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-truncate" href="#spy3"
-              ><router-link to="/confirm">Booking</router-link></a
-            >
-          </li>
-        </ul>
-        
+      <div class="dropdown mt-3 justify-content-start">
+
+                  <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
+            <li class="d-inline d-lg-none">
+              <button
+                data-toggle="collapse"
+                data-target="#nav"
+                class="close float-right"
+              >
+                &times;
+              </button>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/">Home</router-link></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/service">Service Prices</router-link></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/faqs">About</router-link></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate p-0 m-2"
+                ><router-link to="/contact">Contact</router-link></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate py-2" href="#spy3"
+                ><router-link to="/confirm">Booking</router-link></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate"
+                ><router-link class="p-2 mx-2 login" to="/login"
+                  >Login</router-link
+                ></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-truncate"
+                ><router-link class="p-2 mx-2 register" to="/register"
+                  >Register</router-link
+                ></a
+              >
+            </li>
+                                
+          </ul>
+          
       </div>
     </div>
   </div>

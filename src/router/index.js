@@ -99,13 +99,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
   },
   {
-    path: '/confirm',
-    name: 'Confirm',
+    path: '/booking',
+    name: 'Bookings',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Confirm.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Booking.vue')
   },
+  {
+  path: '/admin/adminbookings',
+  name: 'AdminBookings',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import(/* webpackChunkName: "about" */ '../views/AdminBooking.vue')
+},
 ]
 
 const router = createRouter({

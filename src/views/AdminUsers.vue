@@ -13,6 +13,11 @@
             >Users</router-link
           ></a
         >
+        <a class="nav-link text-truncate p-0 m-2"
+          ><router-link class="text-white" to="/admin/adminbookings"
+            >bookings</router-link
+          ></a
+        >
       </ul>
     </div>
   </div>
@@ -29,14 +34,20 @@
             <th>More details</th>
           </tr>
         </thead>
-        <tbody  v-for="user in users" :key="user._id">
-          <tr >
-              <td data-column="User Id">{{ user._id }}</td>
-              <td data-column="User Name">{{ user.user_name }}</td>
-              <td data-column="User Email">{{ user.user_email }}</td>
-              <td data-column="Contact Number">{{ user.user_contactNumber }}</td>
-              <td data-column="Join Date">{{ user.join_date }}</td>
-              <td data-column="More Details"><router-link class="text-black more-details" :to="{name: 'User', params: {id: user._id}}"><i class="bi text-black bi-three-dots"></i></router-link></td>
+        <tbody v-for="user in users" :key="user._id">
+          <tr>
+            <td data-column="User Id">{{ user._id }}</td>
+            <td data-column="User Name">{{ user.user_name }}</td>
+            <td data-column="User Email">{{ user.user_email }}</td>
+            <td data-column="Contact Number">{{ user.user_contactNumber }}</td>
+            <td data-column="Join Date">{{ user.join_date }}</td>
+            <td data-column="More Details">
+              <router-link
+                class="text-black more-details"
+                :to="{ name: 'User', params: { id: user._id } }"
+                ><i class="bi text-black bi-three-dots"></i
+              ></router-link>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -51,21 +62,57 @@ export default {
       users: null,
     };
   },
-  // GETTING SERVICES
-  mounted() {
-    fetch("https://laundry-villa.herokuapp.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.users = data;
-      });
+  // GETTING USERS
+   mounted() {
+    if (localStorage.getItem("jwt")) {
+      fetch("https://laundry-villa.herokuapp.com/users", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+            console.log("after")
+            fetch("https://laundry-villa.herokuapp.com/users", {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                console.log("after")
+                console.log(json)
+                this.users = json;
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            fetch("https://laundry-villa.herokuapp.com/users", {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                this.users = json;
+              })
+              .catch((err) => {
+                alert(err);
+              });
+    }
+    else{
+      alert("Login")
+      this.$router.push({ name: "Admin" });
+    }
   },
 };
 </script>
 
 <style scoped>
-.more-details{
-    background: rgba(139, 102, 96, 0.924);
+.more-details {
+  background: rgba(139, 102, 96, 0.924);
   border: 0;
   padding: 7px 15px;
   margin-top: 20px;

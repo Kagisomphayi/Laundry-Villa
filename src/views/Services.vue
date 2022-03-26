@@ -142,32 +142,6 @@ export default {
       });
       if (dir == "desc") this.filteredServices.reverse();
     },
-    // ADD TO CART(not done)
-    addToCart(index) {
-      this.cart.push(index);
-    },
-    addToCart() {
-      fetch("", {
-        method: "POST",
-        body: JSON.stringify({
-          name: "Yellow Butter Cake",
-          cost: "",
-          image: 1,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((res) => {
-          if (res.status == 201) {
-            swal({
-              text: "Product added in cart",
-              icon: "success",
-            });
-          }
-        })
-        .catch((err) => console.log("err", err));
-    },
     // CREATE PRODUCT(done)
     createProduct() {
       if (!localStorage.getItem("jwt")) {
@@ -207,6 +181,9 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration-line: none;
+}
 .load {
   height: 100vh;
 }

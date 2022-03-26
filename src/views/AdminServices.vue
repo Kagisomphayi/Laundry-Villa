@@ -11,6 +11,11 @@
           <a class="nav-link text-truncate p-0 m-2"
             ><router-link class="text-white" to="/admin/users">Users</router-link></a
           >
+                  <a class="nav-link text-truncate p-0 m-2"
+          ><router-link class="text-white" to="/admin/adminbookings"
+            >bookings</router-link
+          ></a
+        >
         </ul>
       </div>
     </div>
@@ -107,7 +112,7 @@
                       <button
                         type="button"
                         class="btn border-dark card-btn"
-                        @click.prevent="deleteProduct(product._id)"
+                        @click.prevent="deleteService(service._id)"
                       >
                         <i class="bi bi-trash3"></i>
                       </button>
@@ -135,45 +140,102 @@ export default {
     return {
       services: null,
       search: "",
+      admin:""
     };
   },
 
   // GETTING SERVICES
-  mounted() {
-    if (localStorage.getItem("jwt")){}
-    fetch("https://laundry-villa.herokuapp.com/services")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.services = data;
-      });
+   mounted() {
+    if (localStorage.getItem("jwt")) {
+      fetch("https://laundry-villa.herokuapp.com/users", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      })
+            console.log("after")
+            fetch("https://laundry-villa.herokuapp.com/services", {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                console.log("after")
+                console.log(json)
+                this.services = json;
+              })
+              .catch((err) => {
+                alert(err);
+                console.log(err);
+              });
+            fetch("https://laundry-villa.herokuapp.com/users", {
+              method: "GET",
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => {
+                this.users = json;
+              })
+              .catch((err) => {
+                alert(err);
+              });
+    }
+    else{
+      alert("Login")
+      this.$router.push({ name: "Admin" });
+    }
   },
   methods: {
-    // ADD TO CART(not done)
-    addToCart(index) {
-      this.cart.push(index);
-    },
-    addToCart() {
-      fetch("", {
-        method: "POST",
+        // UPDATE ONE PRODUCTS(not done)
+    updateProduct(_id) {
+      fetch("https://groupapibackend.herokuapp.com/products" + this._id, {
+        method: "PUT",
         body: JSON.stringify({
-          name: "Yellow Butter Cake",
-          cost: "",
-          image: 1,
+          product_name: this.product_name,
+          product_price: this.product_price,
+          product_category: this.product_category,
+          product_image: this.product_image,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
-        .then((res) => {
-          if (res.status == 201) {
-            swal({
-              text: "Product added in cart",
-              icon: "success",
-            });
-          }
+        .then((response) => response.json())
+        .then((json) => {
+          alert("Product Created");
+          this.$router.push({ name: "Products" });
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => {
+          alert(err);
+        });
+      console.log(updateProduct(_id));
+    },
+    // DELETE PRODUCT(done)
+    deleteService(id) {
+      const config = {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+      let apiURL = `https://laundry-villa.herokuapp.com/services/${id}`;
+      let indexOfArrayItem = this.services.findIndex((i) => i._id === id);
+      if (window.confirm("Do you really want to delete?")) {
+        axios
+          .delete(apiURL, config)
+          .then(() => {
+            this.services.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     // CREATE PRODUCT(done)
     createProduct() {
