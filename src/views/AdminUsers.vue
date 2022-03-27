@@ -44,24 +44,24 @@
       <table>
         <thead>
           <tr>
-            <th>user ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Contact number</th>
-            <th>Join date</th>
-            <th>More details</th>
-            <th>Delete</th>
+            <th>user ID:</th>
+            <th>Name:</th>
+            <th>Email:</th>
+            <th>Phone:</th>
+            <th>Joined:</th>
+            <th>details:</th>
+            <th>Delete:</th>
             
           </tr>
         </thead>
         <tbody v-for="user in filteredUsers" :key="user._id">
           <tr>
-            <td data-column="User Id">{{ user._id }}</td>
-            <td data-column="User Name">{{ user.user_name }}</td>
-            <td data-column="User Email">{{ user.user_email }}</td>
-            <td data-column="Contact Number">{{ user.user_contactNumber }}</td>
-            <td data-column="Join Date">{{ user.join_date }}</td>
-            <td data-column="More Details">
+            <td data-column="UserId:">{{ user._id }}</td>
+            <td data-column="Name:">{{ user.user_name }}</td>
+            <td data-column="Email:">{{ user.user_email }}</td>
+            <td data-column="Phone:">{{ user.user_contactNumber }}</td>
+            <td data-column="Joined:">{{ user.join_date }}</td>
+            <td data-column="Details:">
 
               <router-link
                 class="text-black more-details"
@@ -69,7 +69,7 @@
                 ><i class="bi text-black bi-three-dots"></i
               ></router-link>
             </td>
-            <td>
+            <td  data-column="Delete:">
                           <button
               type="button"
               class="btn more-details text-black card-btn"
@@ -283,7 +283,7 @@ and also iPads specifically.
     border: none;
     border-bottom: 1px solid #eee;
     position: relative;
-    padding-left: 50%;
+    padding-left: 30%;
   }
 
   td:before {

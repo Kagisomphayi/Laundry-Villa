@@ -70,7 +70,7 @@
               <!-- Button trigger modal -->
               <button
                 type="button"
-                class="btn mt-4 col-1 button-body"
+                class="btn mt-4 col-3 button-body"
                 data-bs-toggle="modal"
                 data-bs-target="#addServiceModal"
               >
@@ -547,4 +547,5 @@ label {
 }
 @media all and (max-width: 400px) {
 }
+
 </style>

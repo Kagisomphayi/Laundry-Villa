@@ -26,7 +26,7 @@
   <div>
     <div class=" container text-center">
       <div style="" class="sort-content justify-content-center row">
-        <div class="col-4" id="main">
+        <div class="col-5 col-lg-4 col-md-6 col-8 " id="main">
           
           
             <input placeholder="Search booking" type="text" v-model="search" />
