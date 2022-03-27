@@ -43,7 +43,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/faqs">About</router-link></a
+                ><router-link to="/about">About</router-link></a
               >
             </li>
             <li class="nav-item">
@@ -121,7 +121,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/faqs">About</router-link></a
+                ><router-link to="/about">About</router-link></a
               >
             </li>
             <li class="nav-item">
