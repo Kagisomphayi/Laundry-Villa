@@ -52,11 +52,6 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-truncate py-2" href="#spy3"
-                ><router-link to="/confirm">Booking</router-link></a
-              >
-            </li>
-            <li class="nav-item">
               <a class="nav-link text-truncate"
                 ><router-link class="p-2 m-0 login" to="/login"
                   >Login</router-link
@@ -134,11 +129,7 @@
                 ><router-link to="/contact">Contact</router-link></a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate py-2" href="#spy3"
-                ><router-link to="/confirm">Booking</router-link></a
-              >
-            </li>
+
             <li class="nav-item">
               <a class="nav-link text-truncate"
                 ><router-link class="p-2 mx-2 login" to="/login"

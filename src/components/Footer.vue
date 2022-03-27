@@ -9,7 +9,7 @@
 
         <!-- Copyright -->
         <div class="footer-copyright text-center mb-0 py-1 text-white h5">
-          ©2021 Copyright: Laundry Villa
+          ©2022 Copyright: Laundry Villa
         </div>
         <!-- Copyright -->
       </div>
