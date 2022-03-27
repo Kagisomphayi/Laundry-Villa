@@ -109,6 +109,9 @@ export default {
     return {
       services: null,
       search: "",
+      filteredServices: null,
+      laundry_service: "",
+      service_price: ""
     };
   },
 

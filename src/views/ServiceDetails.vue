@@ -17,9 +17,9 @@
           <button
             type="button"
             class="btn border-dark card-btn"
-            @click="addToBookings(index)"
+            
           >
-            <i class="bi mx-1 bi-pen"></i>BOOK!
+            <router-link to="/booking"><i class="bi mx-1 bi-pen"></i>BOOK!</router-link>
           </button>
         </div>
       </div>

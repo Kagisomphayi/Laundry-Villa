@@ -9,7 +9,7 @@
         <div class="but-cont">
           <div class="container button-div">
             <h1 class="display-1 title text-bold mb-5">Laundry Villa</h1>
-            <p>The best service you can get</p>
+            <h3 style="color:rgba(139, 102, 96, 0.924);">The best service you can get</h3>
           </div>
         </div>
         <div class="carousel-item active">
@@ -129,6 +129,7 @@ table, thead, tbody{border: white;}
 .title {
   margin-top: 30%;
   color: rgba(10, 81, 139, 0.979);
+  font-weight: bolder;
 }
 .carousel-control-next,
 .carousel-control-prev {

@@ -21,20 +21,32 @@
       </ul>
     </div>
   </div>
+  <!-- SORT/FILTER/ADD -->
+  <div>
+    <div class="">
+      <div style="" class="sort-content justify-content-center row">
+        <div class="col-3" id="main">
+          <h6>Filter:</h6>
+          <label>
+            <input placeholder="Search service" type="text" v-model="search" />
+          </label>
+          <!-- <div v-for="customer in filteredCustomers">
+                  <span>{{ customer.firstName }} {{ customer.lastName }}</span>
+                </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div v-if="bookings" class="pb-5 cont justify-content-center">
       <div class="row col-lg-12 proji" style="row-gap: 30px">
         <div
-                      v-for="booking in bookings"
-            :key="booking._id"
+          v-for="booking in filteredBookings"
+          :key="booking._id"
           class="col-lg-3 col-sm-6 col-6 col-md-4"
           style="display: flex; justify-content: center"
         >
-          <div
-            class="card shadow"
-            style="width: 18rem"
-
-          >
+          <div class="card shadow" style="width: 18rem">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <b>User name: </b> {{ booking.username }}
@@ -54,6 +66,13 @@
               <li class="list-group-item"><b>Date: </b>{{ booking.date }}</li>
               <li class="list-group-item"><b>Time: </b> {{ booking.time }}</li>
             </ul>
+            <button
+              type="button"
+              class="btn card-btn"
+              @click.prevent="deleteBooking(booking._id)"
+            >
+              <i class="bi bi-trash3"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -65,10 +84,12 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       bookings: null,
+      search: "",
     };
   },
   // GETTING USERS
@@ -115,15 +136,52 @@ export default {
       this.$router.push({ name: "Admin" });
     }
   },
+  methods: {
+    // DELETE PRODUCT(done)
+    deleteBooking(id) {
+      const config = {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+      let apiURL = `https://laundry-villa.herokuapp.com/book/${id}`;
+      let indexOfArrayItem = this.bookings.findIndex((i) => i._id === id);
+      if (window.confirm("Do you really want to delete?")) {
+        axios
+          .delete(apiURL, config)
+          .then(() => {
+            this.bookings.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
+  computed: {
+    filteredBookings: function () {
+      return this.bookings.filter((booking) => {
+        return booking.username.match(this.search);
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
+.sort-content {
+  padding: 30px 5px 20px 5px;
+  /* display: flex; 
+  flex-wrap: wrap !important; */
+  margin-top: 150px;
+}
+
 #nav a.router-link-exact-active {
   color: rgba(23, 83, 139, 0.924);
 }
 .content {
-  padding-top: 250px;
+  padding-top: 20px;
 }
 .price-title {
   height: 40px;
@@ -151,7 +209,7 @@ a {
   -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
 }
-.cont{
-  padding-top: 250px;
+.cont {
+  padding-top: 15px;
 }
 </style>

@@ -8,30 +8,30 @@
     <div class="cont container">
       <div class="formm">
         <div class="form-cont">
-          <form @submit.prevent="register" class="contactMe container">
+          <form @submit.prevent="booking" class="contactMe container">
             <label class="text-black">Name:</label>
             <input
               class="form-input neu-border-inset"
               type="text"
-              v-model="user_name"
+              v-model="username"
             />
             <label class="text-black">Email:</label>
             <input
               class="form-input neu-border-inset"
               type="email"
-              v-model="user_email"
+              v-model="email"
             />
 
             <label class="text-black">Contact Number:</label>
             <input
               class="form-input neu-border-inset"
               type="text"
-              v-model="user_contactNumber"
+              v-model="phone"
             />
         <div class="row"> 
             <div class="col-8 col-sm-7">
             <label class="text-black">Service:</label>
-            <select required class="form-select" aria-label="Default select example">
+            <select v-model="service" required class="form-select" aria-label="Default select example">
               <option selected>Select Service</option>
               <option value="wash">Wash</option>
               <option value="dry">Dry</option>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-4 col-sm-5">
             <label class="text-black">Baskets:</label>
-            <input placeholder="No." type="number" id="quantity" name="quantity" min="1" max="5">
+            <input v-model="amount" placeholder="No." type="number" id="quantity" name="quantity" min="1" max="5">
         </div>
         </div>
 
@@ -93,36 +93,50 @@
 export default {
   data() {
     return {
-      user_name: "",
-      user_email: "",
-      user_contactNumber: "",
-      user_password: "",
+      username: "",
+      email: "",
+      phone: "",
+      amount: "",
+      service: "",
+      date: "",
+      time: ""
+
     };
   },
   methods: {
-    register() {
-      fetch("https://laundry-villa.herokuapp.com/users", {
+    booking() {
+      console.log("BEFORE")
+          if (localStorage.getItem("jwt")) {
+      fetch("https://laundry-villa.herokuapp.com/book", {
         method: "POST",
         body: JSON.stringify({
-          user_name: this.user_name,
-          user_email: this.user_email,
-          user_contactNumber: this.user_contactNumber,
-          user_password: this.user_password,
+          username: this.username,
+          email: this.email,
+          phone: this.phone,
+          service: this.service,
+          amount: this.amount,
+          date: this.date,
+          time: this.time,
+
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
+      
         .then((response) => response.json())
         .then((json) => {
-          console.log();
-          alert("User registered");
-          localStorage.setItem("jwt", json.jwt);
-          this.$router.push({ name: "Login" });
+          console.log("AFTER");
+          alert("Booking made");
+          this.$router.push({ name: "Home" });
         })
         .catch((err) => {
           alert(err);
         });
+          }    else{
+      alert("Login")
+      this.$router.push({ name: "Login" });
+    }
     },
   },
 };

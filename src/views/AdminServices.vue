@@ -31,7 +31,7 @@
                   class="form-select text-center"
                   name=""
                   id="sortPrice"
-                  onchange="sortPrice()"
+                  v-model="service_price" @change="sortPrice(service_price)"
                 >
                   <option value="ascending">Ascending</option>
                   <option value="descending">Descending</option>
@@ -43,7 +43,7 @@
                   class="form-select text-center"
                   name=""
                   id="sortTitle"
-                  onchange="sortTitle()"
+                  v-model="laundry_services" @change="sortTitle(laundy_services)"
                 >
                   <option value="ascending">Ascending</option>
                   <option value="descending">Descending</option>
@@ -140,7 +140,9 @@ export default {
     return {
       services: null,
       search: "",
-      admin:""
+      filteredServices:null,
+      laundry_service: "",
+      service_price:""
     };
   },
 
@@ -166,6 +168,7 @@ export default {
                 console.log("after")
                 console.log(json)
                 this.services = json;
+                this.filteredServices = json;
               })
               .catch((err) => {
                 alert(err);
@@ -191,6 +194,27 @@ export default {
     }
   },
   methods: {
+        // SORT
+    sortPrice(dir) {
+      this.filteredServices = this.filteredServices.sort(
+        (a, b) => a.service_price- b.service_price
+      );
+      if (dir == "desc") this.filteredServices.reverse();
+    },
+
+    // SORT BY TITLE
+    sortTitle(dir) {
+      this.filteredServices = this.filteredServices.sort((a, b) => {
+        if (a.laundry_service < b.laundry_service) {
+          return -1;
+        }
+        if (a.laundry_service > b.laundry_service) {
+          return 1;
+        }
+        return 0;
+      });
+      if (dir == "desc") this.filteredServices.reverse();
+    },
         // UPDATE ONE PRODUCTS(not done)
     updateProduct(_id) {
       fetch("https://groupapibackend.herokuapp.com/products" + this._id, {

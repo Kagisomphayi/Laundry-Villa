@@ -21,7 +21,27 @@
       </ul>
     </div>
   </div>
-  <div class="table-content">
+          <!-- SORT/FILTER/ADD -->
+        <div>
+          <div class="">
+            <div style="" class="sort-content justify-content-center row">
+              <div class="col-10 col-md-8 col-lg-3" id="main">
+                <h6>Filter:</h6>
+                <label>
+                  <input
+                    placeholder="Search service"
+                    type="text"
+                    v-model="search"
+                  />
+                </label>
+                <!-- <div v-for="customer in filteredCustomers">
+                  <span>{{ customer.firstName }} {{ customer.lastName }}</span>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+  <div v-if="users" class="table-content">
     <div class="container">
       <table>
         <thead>
@@ -32,9 +52,11 @@
             <th>Contact number</th>
             <th>Join date</th>
             <th>More details</th>
+            <th>Delete</th>
+            
           </tr>
         </thead>
-        <tbody v-for="user in users" :key="user._id">
+        <tbody v-for="user in filteredUsers" :key="user._id">
           <tr>
             <td data-column="User Id">{{ user._id }}</td>
             <td data-column="User Name">{{ user.user_name }}</td>
@@ -42,11 +64,21 @@
             <td data-column="Contact Number">{{ user.user_contactNumber }}</td>
             <td data-column="Join Date">{{ user.join_date }}</td>
             <td data-column="More Details">
+
               <router-link
                 class="text-black more-details"
                 :to="{ name: 'User', params: { id: user._id } }"
                 ><i class="bi text-black bi-three-dots"></i
               ></router-link>
+            </td>
+            <td>
+                          <button
+              type="button"
+              class="btn more-details text-black card-btn"
+              @click.prevent="deleteUser(user._id)"
+            >
+              <i class="bi bi-trash3"></i>
+            </button>
             </td>
           </tr>
         </tbody>
@@ -56,10 +88,12 @@
 </template>
 
 <script>
+import axios from "axios"
 export default {
   data() {
     return {
       users: null,
+      search:""
     };
   },
   // GETTING USERS
@@ -107,10 +141,46 @@ export default {
       this.$router.push({ name: "Admin" });
     }
   },
+  methods:{
+    // DELETE PRODUCT(done)
+    deleteUser(id) {
+      const config = {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      };
+      let apiURL = `https://laundry-villa.herokuapp.com/users/${id}`;
+      let indexOfArrayItem = this.users.findIndex((i) => i._id === id);
+      if (window.confirm("Do you really want to delete?")) {
+        axios
+          .delete(apiURL, config)
+          .then(() => {
+            this.users.splice(indexOfArrayItem, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
+      computed: {
+    filteredUsers: function () {
+      return this.users.filter((user) => {
+        return user.user_name.match(this.search);
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
+.sort-content {
+  padding: 30px 5px 20px 5px;
+  /* display: flex; 
+  flex-wrap: wrap !important; */
+  margin-top: 150px;
+}
 .more-details {
   background: rgba(139, 102, 96, 0.924);
   border: 0;
@@ -136,7 +206,7 @@ a {
   display: inline;
 }
 .table-content {
-  padding-top: 200px;
+  padding-top: 10px;
 }
 .price-title {
   height: 40px;
