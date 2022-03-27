@@ -4,18 +4,22 @@
     <div class="price-title">
       <div class="container text-center">
         <ul class="">
-          <a class="nav-link  text-truncate p-0 m-2"
-            ><router-link class="text-white" to="/admin/services">Services</router-link></a
+          <a class="nav-link text-truncate p-0 m-2"
+            ><router-link class="text-white" to="/admin/services"
+              >Services</router-link
+            ></a
           >
 
           <a class="nav-link text-truncate p-0 m-2"
-            ><router-link class="text-white" to="/admin/users">Users</router-link></a
+            ><router-link class="text-white" to="/admin/users"
+              >Users</router-link
+            ></a
           >
-                  <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/adminbookings"
-            >bookings</router-link
-          ></a
-        >
+          <a class="nav-link text-truncate p-0 m-2"
+            ><router-link class="text-white" to="/admin/adminbookings"
+              >bookings</router-link
+            ></a
+          >
         </ul>
       </div>
     </div>
@@ -31,7 +35,8 @@
                   class="form-select text-center"
                   name=""
                   id="sortPrice"
-                  v-model="service_price" @change="sortPrice(service_price)"
+                  v-model="service_price"
+                  @change="sortPrice(service_price)"
                 >
                   <option value="ascending">Ascending</option>
                   <option value="descending">Descending</option>
@@ -43,7 +48,8 @@
                   class="form-select text-center"
                   name=""
                   id="sortTitle"
-                  v-model="laundry_services" @change="sortTitle(laundy_services)"
+                  v-model="laundry_services"
+                  @change="sortTitle(laundy_services)"
                 >
                   <option value="ascending">Ascending</option>
                   <option value="descending">Descending</option>
@@ -58,9 +64,91 @@
                     v-model="search"
                   />
                 </label>
-                <!-- <div v-for="customer in filteredCustomers">
-                  <span>{{ customer.firstName }} {{ customer.lastName }}</span>
-                </div> -->
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn mt-4 col-1 button-body"
+                data-bs-toggle="modal"
+                data-bs-target="#addServiceModal"
+              >
+                <p class="sub">Add service</p>
+              </button>
+
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="addServiceModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Add Service
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="addTitle" class="form-label">Service name</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addName"
+                          id="addName"
+                          v-model="laundry_servicce"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addPrice"
+                          id="addPrice"
+                          v-model="laundry_price"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="addImg" class="form-label">Image</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addImg"
+                          id="addImg"
+                          v-model="service_image"
+                        />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn button-close"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        class="btn button-body"
+                        data-bs-dismiss="modal"
+                        @click="createService()"
+                      >
+                        Create Service
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -98,8 +186,8 @@
                             name: 'ServiceDetails',
                             params: { id: service._id },
                           }"
-                          ><i class="bi text-black bi-three-dots"></i></router-link
-                        >
+                          ><i class="bi text-black bi-three-dots"></i
+                        ></router-link>
                       </button>
                       <button
                         type="button"
@@ -140,14 +228,15 @@ export default {
     return {
       services: null,
       search: "",
-      filteredServices:null,
+      filteredServices: null,
       laundry_service: "",
-      service_price:""
+      service_price: "",
+      service_image: "",
     };
   },
 
   // GETTING SERVICES
-   mounted() {
+  mounted() {
     if (localStorage.getItem("jwt")) {
       fetch("https://laundry-villa.herokuapp.com/users", {
         method: "GET",
@@ -155,49 +244,48 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
+      });
+      console.log("after");
+      fetch("https://laundry-villa.herokuapp.com/services", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
       })
-            console.log("after")
-            fetch("https://laundry-villa.herokuapp.com/services", {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            })
-              .then((response) => response.json())
-              .then((json) => {
-                console.log("after")
-                console.log(json)
-                this.services = json;
-                this.filteredServices = json;
-              })
-              .catch((err) => {
-                alert(err);
-                console.log(err);
-              });
-            fetch("https://laundry-villa.herokuapp.com/users", {
-              method: "GET",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-            })
-              .then((response) => response.json())
-              .then((json) => {
-                this.users = json;
-              })
-              .catch((err) => {
-                alert(err);
-              });
-    }
-    else{
-      alert("Login")
+        .then((response) => response.json())
+        .then((json) => {
+          console.log("after");
+          console.log(json);
+          this.services = json;
+          this.filteredServices = json;
+        })
+        .catch((err) => {
+          alert(err);
+          console.log(err);
+        });
+      fetch("https://laundry-villa.herokuapp.com/users", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          this.users = json;
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      alert("Login");
       this.$router.push({ name: "Admin" });
     }
   },
   methods: {
-        // SORT
+    // SORT
     sortPrice(dir) {
       this.filteredServices = this.filteredServices.sort(
-        (a, b) => a.service_price- b.service_price
+        (a, b) => a.service_price - b.service_price
       );
       if (dir == "desc") this.filteredServices.reverse();
     },
@@ -215,12 +303,12 @@ export default {
       });
       if (dir == "desc") this.filteredServices.reverse();
     },
-        // UPDATE ONE PRODUCTS(not done)
+    // UPDATE ONE PRODUCTS(not done)
     updateProduct(_id) {
       fetch("https://groupapibackend.herokuapp.com/products" + this._id, {
         method: "PUT",
         body: JSON.stringify({
-          product_name: this.product_name,
+          service_image: this.service_image,
           product_price: this.product_price,
           product_category: this.product_category,
           product_image: this.product_image,
@@ -262,7 +350,7 @@ export default {
       }
     },
     // CREATE PRODUCT(done)
-    createProduct() {
+    createService() {
       if (!localStorage.getItem("jwt")) {
         alert("User not logged in");
         return this.$router.push({ name: "Login" });
@@ -270,10 +358,9 @@ export default {
       fetch("https://laundry-villa.herokuapp.com/services", {
         method: "POST",
         body: JSON.stringify({
-          product_name: this.product_name,
-          product_price: this.product_price,
-          product_image: this.product_image,
-          product_category: this.product_category,
+          service_image: this.service_image,
+          laundry_service: this.laundry_service,
+          service_price: this.service_price,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -282,7 +369,7 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          this.$router.push({ name: "Products" });
+          this.$router.push({ name: "Services" });
         })
         .catch((err) => {
           alert(err);
@@ -297,10 +384,6 @@ export default {
     },
   },
 };
-
-
-
-
 </script>
 
 <style scoped>
@@ -370,7 +453,15 @@ a {
   }
 }
 .button-body {
-  background: rgb(255 212 0);
+  background: rgba(139, 102, 96, 0.924);
+  border: 0;
+  margin-top: 20px;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.button-close {
+  background: rgba(141, 141, 141, 0.924);
   border: 0;
   margin-top: 20px;
   color: rgb(0, 0, 0);
@@ -379,7 +470,8 @@ a {
 }
 button:hover {
   opacity: 0.8;
-  background: #000000;
+  background: #132d85;
+  color:white
 }
 .sub:hover {
   color: rgb(255, 255, 255) !important;

@@ -23,17 +23,15 @@
   </div>
           <!-- SORT/FILTER/ADD -->
         <div>
-          <div class="">
+          <div class=" container text-center">
             <div style="" class="sort-content justify-content-center row">
-              <div class="col-10 col-md-8 col-lg-3" id="main">
-                <h6>Filter:</h6>
-                <label>
+              <div class="col-10 col-md-8 col-lg-4" id="main">
                   <input
-                    placeholder="Search service"
+                    placeholder="Search user"
                     type="text"
                     v-model="search"
                   />
-                </label>
+                
                 <!-- <div v-for="customer in filteredCustomers">
                   <span>{{ customer.firstName }} {{ customer.lastName }}</span>
                 </div> -->
@@ -215,6 +213,9 @@ a {
   z-index: 100;
   position: fixed;
   top: 110px;
+}
+input {
+  width: 100% !important;
 }
 table {
   width: 100%;

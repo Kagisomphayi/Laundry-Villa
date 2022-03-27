@@ -1,35 +1,36 @@
 <template>
   <div class="price-title">
     <div class="container text-center">
-      <ul class="">
+      <ul class=" nav-links">
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/services"
+          ><router-link class="" to="/admin/services"
             >Services</router-link
           ></a
         >
 
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/users"
+          ><router-link class="" to="/admin/users"
             >Users</router-link
           ></a
         >
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/adminbookings"
+          ><router-link class="" to="/admin/adminbookings"
             >bookings</router-link
           ></a
         >
       </ul>
+
     </div>
   </div>
   <!-- SORT/FILTER/ADD -->
   <div>
-    <div class="">
+    <div class=" container text-center">
       <div style="" class="sort-content justify-content-center row">
-        <div class="col-3" id="main">
-          <h6>Filter:</h6>
-          <label>
-            <input placeholder="Search service" type="text" v-model="search" />
-          </label>
+        <div class="col-4" id="main">
+          
+          
+            <input placeholder="Search booking" type="text" v-model="search" />
+         
           <!-- <div v-for="customer in filteredCustomers">
                   <span>{{ customer.firstName }} {{ customer.lastName }}</span>
                 </div> -->
@@ -37,7 +38,12 @@
       </div>
     </div>
   </div>
+
+
   <div class="container">
+          <div class="mt-5 text-center">
+        <h5 class="">Bookings</h5> 
+      </div>
     <div v-if="bookings" class="pb-5 cont justify-content-center">
       <div class="row col-lg-12 proji" style="row-gap: 30px">
         <div
@@ -176,12 +182,21 @@ export default {
   flex-wrap: wrap !important; */
   margin-top: 150px;
 }
-
+input {
+  width: 100% !important;
+}
 #nav a.router-link-exact-active {
   color: rgba(23, 83, 139, 0.924);
 }
 .content {
   padding-top: 20px;
+}
+.nav-link {
+  display: inline;
+}
+
+h5 {
+  color: rgba(10, 81, 139, 0.979);
 }
 .price-title {
   height: 40px;
@@ -193,6 +208,7 @@ export default {
 }
 a {
   text-decoration-line: none;
+  color: white;
 }
 .load {
   height: 100vh;
@@ -211,5 +227,8 @@ a {
 }
 .cont {
   padding-top: 15px;
+}
+.a:hover{
+  color:rgba(36, 53, 128, 0.924) !important;
 }
 </style>
