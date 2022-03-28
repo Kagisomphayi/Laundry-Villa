@@ -21,7 +21,7 @@ export default {
     position: fixed;
     top: 0 !important;
     text-align: center;
-    z-index: 999;
+    z-index: 1999 !important;
 }
 .top-social{
     font-size: 25px;
