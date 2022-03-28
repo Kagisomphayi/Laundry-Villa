@@ -194,8 +194,11 @@
                         class="btn mx-2 border-dark card-btn"
                         data-bs-toggle="modal"
                         data-bs-target="#updateModal"
+                         @click.prevent="updateService(service._id)"
                       >
+                      
                         <i class="bi bi-pencil-square"></i>
+                        
                       </button>
                       <button
                         type="button"
@@ -304,13 +307,13 @@ export default {
       if (dir == "desc") this.filteredServices.reverse();
     },
     // UPDATE ONE PRODUCTS(not done)
-    updateProduct(_id) {
-      fetch("https://groupapibackend.herokuapp.com/products" + this._id, {
+    updateService(_id) {
+      fetch("http://localhost:3500/services" + this._id, {
         method: "PUT",
         body: JSON.stringify({
+          laundry_service: this.laundry_service,
           service_image: this.service_image,
-          product_price: this.product_price,
-          product_category: this.product_category,
+          service_price: this.service_price,
           product_image: this.product_image,
         }),
         headers: {
@@ -320,13 +323,13 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("Product Created");
-          this.$router.push({ name: "Products" });
+          alert("Service Updated");
+          this.$router.push({ name: "AdminServices" });
         })
         .catch((err) => {
           alert(err);
         });
-      console.log(updateProduct(_id));
+      console.log(this.updateService(_id));
     },
     // DELETE PRODUCT(done)
     deleteService(id) {
@@ -369,7 +372,7 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          this.$router.push({ name: "Services" });
+          this.$router.push({ name: "AdminServices" });
         })
         .catch((err) => {
           alert(err);
