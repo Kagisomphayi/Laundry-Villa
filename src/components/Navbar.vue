@@ -65,15 +65,19 @@
                 ></a
               >
             </li>
-                                
           </ul>
           <div class="dropdown">
-  <button class="dropbtn">Profile</button>
-  <div class="dropdown-content">
-    <a href="#"><i class="bi bi-person-circle"></i>Profile</a>
-    <a v-on:click="logout" href="#"><i class="bi bi-box-arrow-left"></i>Logout</a>
-  </div>
-</div>
+            <button class="dropbtn">Profile</button>
+            <div class="dropdown-content">
+              
+                <router-link class="profile" to="Profile"
+                  ><i class="bi bi-person-circle"></i>Profile</router-link
+                >
+            
+              
+                <router-link v-on:click="logout" to="Login"><i class="bi bi-box-arrow-left"></i>Logout</router-link>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
@@ -98,55 +102,52 @@
     </div>
     <div class="offcanvas-body">
       <div class="dropdown mt-3 justify-content-start">
+        <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
+          <li class="d-inline d-lg-none">
+            <button
+              data-toggle="collapse"
+              data-target="#nav"
+              class="close float-right"
+            >
+              &times;
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate p-0 m-2"
+              ><router-link to="/">Home</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate p-0 m-2"
+              ><router-link to="/service">Service Prices</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate p-0 m-2"
+              ><router-link to="/about">About</router-link></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate p-0 m-2"
+              ><router-link to="/contact">Contact</router-link></a
+            >
+          </li>
 
-                  <ul class="navbar-nav bg-light m-0 ml-lg-auto p-3 p-lg-0">
-            <li class="d-inline d-lg-none">
-              <button
-                data-toggle="collapse"
-                data-target="#nav"
-                class="close float-right"
-              >
-                &times;
-              </button>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/">Home</router-link></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/service">Service Prices</router-link></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/about">About</router-link></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate p-0 m-2"
-                ><router-link to="/contact">Contact</router-link></a
-              >
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link text-truncate"
-                ><router-link class="p-2 mx-2 login" to="/login"
-                  >Login</router-link
-                ></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-truncate"
-                ><router-link class="p-2 mx-2 register" to="/register"
-                  >Register</router-link
-                ></a
-              >
-            </li>
-                                
-          </ul>
-          
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link class="p-2 mx-2 login" to="/login"
+                >Login</router-link
+              ></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-truncate"
+              ><router-link class="p-2 mx-2 register" to="/register"
+                >Register</router-link
+              ></a
+            >
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -155,20 +156,19 @@
 <script>
 export default {
   name: "Login",
-  methods:{
-    logout()
-    {
+  methods: {
+    logout() {
       localStorage.clear();
-      this.$router.push({ name: "Login" })
-      }
-  }
+      this.$router.push({ name: "Login" });
+    },
+  },
 };
 </script>
 
 <style scoped>
 .dropbtn {
   background-color: #ffffff;
-  color:  rgba(10, 81, 139, 0.979);
+  color: rgba(10, 81, 139, 0.979);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -176,7 +176,7 @@ export default {
 }
 .dropbtn:hover {
   background-color: #ffffff;
-  color:  rgba(255, 255, 255, 0.979);
+  color: rgba(255, 255, 255, 0.979);
   padding: 16px;
   font-size: 16px;
   border: none;
@@ -192,7 +192,7 @@ export default {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -203,12 +203,17 @@ export default {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color:  rgba(10, 81, 139, 0.979);}
-
+.dropdown:hover .dropbtn {
+  background-color: rgba(10, 81, 139, 0.979);
+}
 
 .login,
 .register {

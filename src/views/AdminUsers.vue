@@ -21,8 +21,8 @@
       </ul>
     </div>
   </div>
-          <!-- SORT/FILTER/ADD -->
-        <div>
+         <div v-if="admin">
+        <div >
           <div class=" container text-center">
             <div style="" class="sort-content justify-content-center row">
               <div class="col-10 col-md-8 col-lg-4" id="main">
@@ -83,6 +83,10 @@
       </table>
     </div>
   </div>
+  </div>
+<div class="load" v-else>
+  <div class="loading" > ONLY ADMIN IS ALLOWED TO VIEW ALL USERS. LOG-IN AS AN ADMIN!!!</div>
+</div>
 </template>
 
 <script>
@@ -91,11 +95,18 @@ export default {
   data() {
     return {
       users: null,
-      search:""
+      search:"",
+      admin: false
     };
   },
   // GETTING USERS
    mounted() {
+    this.user = this.$route.params;
+
+    if (localStorage.getItem("Admin") === "true") {
+      this.admin = true;
+    }
+
     if (localStorage.getItem("jwt")) {
       fetch("https://laundry-villa.herokuapp.com/users", {
         method: "GET",
@@ -109,6 +120,7 @@ export default {
               method: "GET",
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
+                 Authorization: `Bearer ${localStorage.getItem("jwt")}`,
               },
             })
               .then((response) => response.json())
@@ -124,6 +136,7 @@ export default {
               method: "GET",
               headers: {
                 "Content-type": "application/json; charset=UTF-8",
+                 Authorization: `Bearer ${localStorage.getItem("jwt")}`,
               },
             })
               .then((response) => response.json())
@@ -173,6 +186,13 @@ export default {
 </script>
 
 <style scoped>
+
+.load {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
 .sort-content {
   padding: 30px 5px 20px 5px;
   /* display: flex; 

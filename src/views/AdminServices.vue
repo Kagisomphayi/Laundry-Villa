@@ -69,6 +69,7 @@
             <div class="row justify-content-center">
               <!-- Button trigger modal -->
               <button
+              v-if="admin"
                 type="button"
                 class="btn mt-4 col-3 button-body"
                 data-bs-toggle="modal"
@@ -141,6 +142,7 @@
                       <button
                         type="button"
                         class="btn button-body"
+                       
                         data-bs-dismiss="modal"
                         @click="createService()"
                       >
@@ -190,6 +192,7 @@
                         ></router-link>
                       </button>
                       <button
+                       v-if="admin"
                         type="button"
                         class="btn mx-2 border-dark card-btn"
                         data-bs-toggle="modal"
@@ -201,6 +204,7 @@
                         
                       </button>
                       <button
+                      v-if="admin"
                         type="button"
                         class="btn border-dark card-btn"
                         @click.prevent="deleteService(service._id)"
@@ -235,11 +239,18 @@ export default {
       laundry_service: "",
       service_price: "",
       service_image: "",
+      admin: false      
     };
   },
 
   // GETTING SERVICES
   mounted() {
+    this.user = this.$route.params;
+
+    if (localStorage.getItem("Admin") === "true") {
+      this.admin = true;
+    }
+
     if (localStorage.getItem("jwt")) {
       fetch("https://laundry-villa.herokuapp.com/users", {
         method: "GET",
@@ -270,6 +281,7 @@ export default {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,          
         },
       })
         .then((response) => response.json())
@@ -354,11 +366,7 @@ export default {
     },
     // CREATE PRODUCT(done)
     createService() {
-      if (!localStorage.getItem("jwt")) {
-        alert("User not logged in");
-        return this.$router.push({ name: "Login" });
-      }
-      fetch("https://laundry-villa.herokuapp.com/services", {
+      fetch("http://localhost:3500/services", {
         method: "POST",
         body: JSON.stringify({
           service_image: this.service_image,

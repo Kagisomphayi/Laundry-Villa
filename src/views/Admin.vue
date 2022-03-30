@@ -57,8 +57,13 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          if(json.jwt){
+          if (json.jwt) {
+            console.log("JSON", json);
             localStorage.setItem("jwt", json.jwt);
+            localStorage.setItem("user", JSON.stringify(json.user));
+            localStorage.setItem("Admin", JSON.stringify(json.user.admin));
+            // console.log(json.user)
+            this.$emit("login");
           }
           if(localStorage.getItem("jwt")){
             this.$router.push({ name: "AdminServices" });

@@ -79,6 +79,7 @@ export default {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
+         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
     })
       .then((response) => response.json())

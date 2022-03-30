@@ -104,9 +104,10 @@ export default {
     };
   },
   methods: {
+    // CREATE A BOOKING
     booking() {
       console.log("BEFORE")
-          if (localStorage.getItem("jwt")) {
+      if (localStorage.getItem("jwt")) {
       fetch("https://laundry-villa.herokuapp.com/book", {
         method: "POST",
         body: JSON.stringify({
@@ -121,18 +122,17 @@ export default {
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
-      })
-      
-        .then((response) => response.json())
+      }).then((response) => response.json())
         .then((json) => {
-          console.log("AFTER");
           alert("Booking made");
           this.$router.push({ name: "Home" });
         })
         .catch((err) => {
           alert(err);
         });
+        
           }    else{
       alert("Login")
       this.$router.push({ name: "Login" });

@@ -23,7 +23,7 @@
     </div>
   </div>
   <!-- SORT/FILTER/ADD -->
-  <div>
+  <div v-if="admin" class="">
     <div class=" container text-center">
       <div style="" class="sort-content justify-content-center row">
         <div class="col-5 col-lg-4 col-md-6 col-8 " id="main">
@@ -37,10 +37,10 @@
         </div>
       </div>
     </div>
-  </div>
+ 
 
 
-  <div class="container">
+  <div v-if="admin" class="container">
           <div class="mt-5 text-center">
         <h5 class="">Bookings</h5> 
       </div>
@@ -83,10 +83,14 @@
         </div>
       </div>
     </div>
-    <div v-else class="load">
-      <div class="loading"></div>
+    <div v-else class="loaderDiv">
+      <div class="loader-"></div>
     </div>
   </div>
+   </div>
+  <div class="load" v-else>
+  <div class="loading" > ONLY ADMIN IS ALLOWED TO VIEW ALL BOOKINGS. LOG-IN AS AN ADMIN!!!</div>
+</div>
 </template>
 
 <script>
@@ -96,10 +100,17 @@ export default {
     return {
       bookings: null,
       search: "",
+      admin: false
     };
   },
   // GETTING USERS
   mounted() {
+    this.user = this.$route.params;
+
+    if (localStorage.getItem("Admin") === "true") {
+      this.admin = true;
+    }
+
     if (localStorage.getItem("jwt")) {
       fetch("https://laundry-villa.herokuapp.com/users", {
         method: "GET",
@@ -113,6 +124,7 @@ export default {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
         .then((response) => response.json())
@@ -128,6 +140,7 @@ export default {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+           Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
         .then((response) => response.json())
@@ -176,6 +189,12 @@ export default {
 </script>
 
 <style scoped>
+.load {
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
 .sort-content {
   padding: 30px 5px 20px 5px;
   /* display: flex; 
@@ -210,10 +229,10 @@ a {
   text-decoration-line: none;
   color: white;
 }
-.load {
+.loaderDiv {
   height: 100vh;
 }
-.loading {
+.loader {
   border: 16px solid #f3f3f3;
   position: fixed;
   top: 5%;
