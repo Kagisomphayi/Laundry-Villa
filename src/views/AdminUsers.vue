@@ -3,18 +3,18 @@
     <div class="container text-center">
       <ul class="">
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/services"
+          ><router-link class="text-white" to="/adminservices"
             >Services</router-link
           ></a
         >
 
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/users"
+          ><router-link class="text-white" to="/adminusers"
             >Users</router-link
           ></a
         >
         <a class="nav-link text-truncate p-0 m-2"
-          ><router-link class="text-white" to="/admin/adminbookings"
+          ><router-link class="text-white" to="/adminbookings"
             >bookings</router-link
           ></a
         >

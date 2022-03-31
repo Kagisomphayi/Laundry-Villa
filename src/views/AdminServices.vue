@@ -5,18 +5,18 @@
       <div class="container text-center">
         <ul class="">
           <a class="nav-link text-truncate p-0 m-2"
-            ><router-link class="text-white" to="/admin/services"
+            ><router-link class="text-white" to="/adminservices"
               >Services</router-link
             ></a
           >
 
           <a class="nav-link text-truncate p-0 m-2"
-            ><router-link class="text-white" to="/admin/users"
+            ><router-link class="text-white" to="/adminusers"
               >Users</router-link
             ></a
           >
           <a class="nav-link text-truncate p-0 m-2"
-            ><router-link class="text-white" to="/admin/adminbookings"
+            ><router-link class="text-white" to="/adminbookings"
               >bookings</router-link
             ></a
           >
@@ -78,7 +78,7 @@
                 <p class="sub">Add service</p>
               </button>
 
-              <!-- Modal -->
+              <!--ADD SERVICE Modal -->
               <div
                 class="modal fade"
                 id="addServiceModal"
@@ -152,6 +152,79 @@
                   </div>
                 </div>
               </div>
+              <!--UPDATE Modal -->
+              <div
+                class="modal fade"
+                id="updateServiceModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Update Service
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="addTitle" class="form-label">Service name</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addName"
+                          id="addName"
+                          v-model="laundry_servicce"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addPrice"
+                          id="addPrice"
+                          v-model="laundry_price"
+                        />
+                      </div>
+                      <div class="mb-3">
+                        <label for="addImg" class="form-label">Image</label>
+                        <input
+                          class="form-control"
+                          type="text"
+                          name="addImg"
+                          id="addImg"
+                          v-model="service_image"
+                        />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn button-close"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        class="btn button-body"
+                        data-bs-dismiss="modal"
+                        @click="createService()"
+                      >
+                        Update Service
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -191,7 +264,7 @@
                           ><i class="bi text-black bi-three-dots"></i
                         ></router-link>
                       </button>
-                      <button
+                      <!-- <button
                        v-if="admin"
                         type="button"
                         class="btn mx-2 border-dark card-btn"
@@ -202,7 +275,17 @@
                       
                         <i class="bi bi-pencil-square"></i>
                         
+                      </button> -->
+                      <button
+                      v-if="admin"
+                        type="button"
+                        class="btn mx-2  border-dark"
+                        data-bs-toggle="modal"
+                        data-bs-target="#updateServiceModal"
+                      >
+                      <i class="bi bi-pencil-square"></i>
                       </button>
+
                       <button
                       v-if="admin"
                         type="button"
