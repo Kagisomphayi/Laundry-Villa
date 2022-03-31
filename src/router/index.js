@@ -65,7 +65,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Admin.vue')
   },
   {
-    path: '/admin/services',
+    path: '/adminservices',
     name: 'AdminServices',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -73,7 +73,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminServices.vue')
   },
   {
-    path: '/admin/users',
+    path: '/adminusers',
     name: 'AdminUsers',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -81,7 +81,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AdminUsers.vue')
   },
   {
-    path: '/admin/users/userdetails/:id',
+    path: '/adminusers/userdetails/:id',
     name: 'User',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -115,7 +115,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Booking.vue')
   },
   {
-  path: '/admin/adminbookings',
+  path: '/adminbookings',
   name: 'AdminBookings',
   // route level code-splitting
   // this generates a separate chunk (about.[hash].js) for this route
