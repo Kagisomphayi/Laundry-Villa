@@ -19,13 +19,13 @@
             alt="..."
           />
         </div>
-        <!-- <div class="carousel-item">
+        <div class="carousel-item">
           <img
             src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
             class="d-block w-100"
             alt="..."
           />
-        </div> -->
+        </div>
         <!-- <div class="carousel-item">
           <img
             src="https://images.unsplash.com/photo-1561053720-76cd73ff22c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
